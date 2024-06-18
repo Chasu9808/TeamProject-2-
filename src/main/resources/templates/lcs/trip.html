@@ -81,6 +81,21 @@
             </nav>
         </div><!-- bottom-wrap : end-->
     </header><!--header : end-->
+
+    <div class="container">
+        <h1>Travel Recommendations</h1>
+        <ul>
+            <li th:each="destination : ${lcsTriplist}">
+                <h2 th:text="${destination.trip_name}">Destination Name</h2>
+                <p th:text="${destination.description}">Destination Description</p>
+                <p th:text="${destination.location}">Location</p>
+                <p th:text="${destination.rating}">Rating</p>
+                <p th:text="${destination.category}">Category</p>
+                <p th:text="${destination.recommended ? 'Recommended' : 'Not Recommended'}">Recommended Status</p>
+            </li>
+        </ul>
+    </div>
+
     <section id="Quick" class="inner"><!-- Quick : start-->
         <div class="Quick-title"><!--Quick-title : start-->
             <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>

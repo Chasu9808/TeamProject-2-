@@ -87,13 +87,16 @@
     <div class="container">
         <h1>Travel Recommendations</h1>
         <ul>
-            <li th:each="destination : ${lcsTriplist}">
-                <h2 th:text="${destination.trip_name}">Destination Name</h2>
-                <p th:text="${destination.description}">Destination Description</p>
-                <p th:text="${destination.location}">Location</p>
-                <p th:text="${destination.rating}">Rating</p>
-                <p th:text="${destination.category}">Category</p>
-                <p th:text="${destination.recommended ? 'Recommended' : 'Not Recommended'}">Recommended Status</p>
+            <li th:each="trip : ${lcsTripList}" class="trip-item">
+                <img th:src="${trip.trip_imageUrl}" alt="Image of [[${trip.trip_name}]]">
+                <div class="trip-details">
+                    <h2 th:text="${trip.trip_name}">Destination Name</h2>
+                    <p th:text="${trip.trip_description}">Destination Description</p>
+                    <p th:text="${trip.trip_location}">Location</p>
+                    <p th:text="${trip.trip_rating}">Rating</p>
+                    <p th:text="${trip.trip_category}">Category</p>
+                    <p th:text="${trip.trip_recommended ? 'Recommended' : 'Not Recommended'}">Recommendation</p>
+                </div>
             </li>
         </ul>
     </div>
@@ -234,29 +237,6 @@
                 Copyright ⓒ. All Rights Reserved.</p>
         </div>
     </footer><!-- footer : end-->
-<!--    <div id="fix">&lt;!&ndash;cart-fix : start&ndash;&gt;-->
-<!--        <ul>-->
-<!--            <li class="cart">-->
-<!--                <a href="#">-->
-<!--                    <p>장바구니</p>-->
-<!--                </a>-->
-<!--            </li>-->
-<!--            <li class="edu-box">-->
-<!--                <div class="edu1">-->
-<!--                    <a href="#">교육<br>수강신청</a>-->
-<!--                </div>-->
-<!--                <div class="edu2">-->
-<!--                    <a href="#">온라인<br>클래스</a>-->
-<!--                </div>-->
-<!--                <div class="edu3">-->
-<!--                    <a href="#">시간표<br>바로가기</a>-->
-<!--                </div>-->
-<!--                <div class="top-btn">&lt;!&ndash;top-btn : start&ndash;&gt;-->
-<!--                    <a href="#header">TOP</a>-->
-<!--                </div>&lt;!&ndash;top-btn : end&ndash;&gt;-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </div>&lt;!&ndash; cart-fix : end&ndash;&gt;-->
 </div><!--wrap-->
 
 </body>

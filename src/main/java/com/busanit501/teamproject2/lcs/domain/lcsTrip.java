@@ -22,17 +22,20 @@ public class lcsTrip extends BaseEntity{
     private String trip_name;
 
     @Column(nullable = false)
-    private String description;
+    private String trip_description;
 
     @Column(nullable = false)
-    private String location;
+    private String trip_location;
 
     @Column(nullable = false)
-    private String rating;
+    private String trip_rating;
 
     @Column(nullable = false)
-    private String category;
+    private String trip_category;
 
     @Column(nullable = false)
-    private boolean recommended;
+    private boolean trip_recommended;
+
+    @Column(nullable = false)
+    private String trip_imageUrl;
 }

@@ -12,9 +12,10 @@ import lombok.NoArgsConstructor;
 public class lcsTripDTO {
     private Long trip_id;
     private String trip_name;
-    private String description;
-    private String location;
-    private String rating;
-    private String category;
-    private boolean recommended;
+    private String trip_description;
+    private String trip_location;
+    private String trip_rating;
+    private String trip_category;
+    private boolean trip_recommended;
+    private String trip_imageUrl;
 }

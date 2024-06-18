@@ -15,12 +15,16 @@ import java.util.List;
 public class lcsTripController {
 
     @Autowired
-    private lcsTripService service;
+    private lcsTripService tripService;
+    @GetMapping("/fetch-trips")
+    public String fetchTrips() {
+        tripService.fetchAndSaveTripData();
+        return "fetch-trips-success";
+    }
 
     @GetMapping("/trip")
     public String index(Model model) {
-        List<lcsTripDTO> lcsTripList = service.getAllTrips();
-        model.addAttribute("lcsTripList", lcsTripList);
-        return "index";
+        model.addAttribute("lcsTripList", tripService.getAllTrips());
+        return "lcs/trip";
     }
 }

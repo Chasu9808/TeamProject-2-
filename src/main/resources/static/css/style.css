@@ -2800,7 +2800,22 @@ nav .nav-box .nav-btn:hover>a::after {
   font-size: 0.7rem;
 
 }
+
+.trip-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
+  .trip-item img {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+  }
+  .trip-details {
+    max-width: 600px;
+  }
+}
+
 
 
 

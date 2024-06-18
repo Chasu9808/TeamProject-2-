@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+	<!-- sbb CSS -->
+	<link rel="stylesheet" type="text/css" th:href="@{/style_layout.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+	<title>Hello, sbb!</title>
+</head>
+
+<body>
+<title>TripWithMe 페이지</title>
+
+<link th:href="@{/css/common.css}" rel="stylesheet">
+<link th:href="@{/css/swiper-min.css}" rel="stylesheet">
+<link th:href="@{/css/style.css}" rel="stylesheet">
+<link th:href="@{/css/slick.css}" rel="stylesheet">
+<script th:src="@{/js/html5.js}"></script>
+<script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+<script src="http://code.jquery.com/jquery-migrate-3.0.0.js"></script>
+<script th:src="@{/js/slick.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</head>
+
+
+<div id="wrap">
+
+	<header id="header"><!--header : start-->
+
+		<div class="header-line">
+			<div class="top-wrap inner"> <!--top=wrap : start-->
+				<div class="logo-box"><!--logo : start-->
+					<a href="/lcs/list"><img src="/images/lcs_logo.png" alr="메인페이지 바로가기"></a>
+				</div><!--logo : end-->
+				<div class="util-box"><!--util-box : start-->
+					<a href="/msy/login">로그인</a>
+					<a href="/msy/signup">회원가입</a>
+					<a href="/lcs/list">사이트맵</a>
+				</div><!--util-box : end-->
+				<div class="mob-menu-warp">
+					<a class="mob-cart">
+						<img src="/images/lcs_travel.png" alt="여행지 바로가기">
+					</a>
+					<a class="mob_menu_open">
+						<img src="/images/mob_menu.png" alt="메뉴열기">
+					</a>
+
+				</div>
+			</div><!--top=wrap: end-->
+
+		</div>
+		<!--모바일네비 열기-->
+		<div class="layer_bg"></div>
+		<div id="mob_gnb">
+			<a class="mob_menu_close">
+				<img src="./images/close.png" alt="메뉴닫기">
+			</a>
+
+			<div class="mob_gnb_box">
+				<div class="mob_util_wrap">
+					<div class="mob_util_box">
+						<ul>
+							<li><a href="/msy/login">로그인</a></li>
+							<li><i class="far fa-user-circle"></i> <a href="/msy/signup">회원가입</a></li>
+						</ul>
+					</div>
+
+					<div class="search_box">
+						<form name="topfrm" id="topfrm" method="post">
+							<input type="hidden" id="objTab" name="objTab" value="1">
+							<input type="text" name="profileclass_nm" id="profileclass_nm" onkeypress="if(event.keyCode==13){top_search(); return false;}" placeholder="검색어를 입력하세요">
+							<a onclick="top_search();"><img src="/images/new_search.png" alt="검색버튼"></a>
+						</form>
+					</div>
+				</div>
+
+				<div id="mob_menu">
+					<ul class="mob_menu_wrap">
+						<li><a href="/" class="tit">여행지</a>
+							<ul class="sub_menu">
+								<li><a href="https://www.women.co.kr/sub02/sub2_5.do">추천여행지</a></li>
+								<li><a href="https://www.women.co.kr/sub02/sub2_7.do">랜덤여행지</a></li>
+								<li>
+									<a href="/" class="sub_tit">수강신청안내</a>
+									<ol class="depth_menu bu">
+										<li><a href="https://www.women.co.kr/sub02/sub2_1.do">교육운영 및 신청방법</a></li>
+										<li><a href="https://www.women.co.kr/sub02/sub2_2.do">수강신청절차</a></li>
+										<li><a href="https://www.women.co.kr/sub02/sub2_3.do">결제방법</a></li>
+										<li><a href="https://www.women.co.kr/sub02/sub2_4.do">수강취소 및 환불</a></li>
+									</ol>
+								</li>
+								<li><a href="https://www.women.co.kr/sub02/sub2_6.do">사물함 신청</a></li>
+								<!-- <li><a href="/sub02/sub2_8.do">가족사진 이벤트 신청</a></li> -->
+							</ul>
+						</li>
+
+						<li><a href="/" class="tit">사업소개</a>
+							<ul class="sub_menu">
+								<li><a href="https://www.women.co.kr/sub03/sub3_1.do">평생교육</a></li>
+								<li>
+									<a href="/" class="sub_tit">경력키움사업</a>
+									<ol class="depth_menu bu">
+										<li><a href="https://www.women.co.kr/sub03/sub3_2.do">경력키움센터</a></li>
+										<li><a href="https://www.women.co.kr/sub04/sub4_2.do">키움강사단</a></li>
+										<li><a href="https://www.women.co.kr/sub04/sub4_3.do">키움강사단신청</a></li>
+										<li><a href="https://www.women.co.kr/sub04/sub4_4.do">교육프로그램신청</a></li>
+									</ol>
+								</li>
+								<li>
+									<a href="/" class="sub_tit">심리상담및치료</a>
+									<ol class="depth_menu bu">
+										<li><a href="https://www.women.co.kr/sub05/sub5_2.do">서초심리상담센터(잠원)</a></li>
+										<li><a href="https://www.women.co.kr/sub05/sub5_3.do">서초심리상담센터(내곡)</a></li>
+										<li><a href="https://www.women.co.kr/sub05/sub5_4.do">상담사·치료사 소개</a></li>
+									</ol>
+								</li>
+								<li><a href="https://www.women.co.kr/sub05/sub5_1.do">이혼가정면접교섭</a></li>
+								<li><a href="https://www.women.co.kr/sub03/sub3_4.do">양성평등활동사업</a></li>
+								<!-- <li><a href="/sub03/sub3_5.do">늘봄카페</a></li> -->
+								<li><a href="https://www.women.co.kr/sub03/sub3_3.do">외부공모사업</a></li>
+							</ul>
+						</li>
+
+						<li><a href="/" class="tit">커뮤니티</a>
+							<ul class="sub_menu">
+								<li><a href="https://www.women.co.kr/sub06/sub6_1.do">공지사항</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_2.do">교육안내</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_8.do">e-book</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_3.do">언론보도·보도자료</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_4.do">사진·영상자료</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_5.do">교육제안·강사지원</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_6.do">자주묻는질문</a></li>
+								<li><a href="https://www.women.co.kr/sub06/sub6_7.do">1대1 질문</a></li>
+							</ul>
+						</li>
+
+						<li><a href="/" class="tit">기관소개 </a>
+							<ul class="sub_menu">
+								<li><a href="https://www.women.co.kr/sub01/sub1_1.do">인사말</a></li>
+								<li><a href="https://www.women.co.kr/sub01/sub1_2.do">법인소개</a></li>
+								<li><a href="https://www.women.co.kr/sub01/sub1_3.do">미션비전</a></li>
+								<li><a href="https://www.women.co.kr/sub01/sub1_4.do">연혁</a></li>
+								<li><a href="https://www.women.co.kr/sub01/sub1_5.do">조직도</a></li>
+								<li>
+									<a href="/" class="sub_tit">시설안내</a>
+									<ol class="depth_menu bu">
+										<li><a href="https://www.women.co.kr/sub01/sub1_6.do">잠원센터</a></li>
+										<!-- li><a href="/sub01/sub1_6_2.do">방배센터</a></li -->
+										<li><a href="https://www.women.co.kr/sub01/sub1_6_4.do">서초심리상담센터(내곡)</a></li>
+										<!-- <li><a href="/sub01/sub1_6_5.do">늘봄카페</a></li> -->
+									</ol>
+								</li>
+								<li><a href="https://www.women.co.kr/sub01/sub1_7.do">찾아오시는 길</a></li>
+							</ul>
+						</li>
+
+						<li><a href="/" class="tit">마이페이지 </a>
+							<ul class="sub_menu">
+								<li><a href="https://www.women.co.kr/mypage/lecture_history.do">수강신청내역</a></li>
+								<li><a href="https://www.women.co.kr/mypage/memberinfo.do">개인정보관리</a></li>
+								<li><a href="https://www.women.co.kr/mypage/childmember.do">자녀 계정관리</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div><!-- //mob_menu -->
+			</div> <!--  mob_gnb_box -->
+		</div><!-- //mob_gnb -->
+		<!--모바일네비 닫기-->
+
+
+
+
+
+
+
+
+	<!-- 네비게이션바 -->
+<!--	<nav th:replace="~{navbar :: navbarFragment}"></nav>-->
+	<a class="navbar-brand" href="/">SBB</a>
+	<ul>
+		<li>
+			<a sec:authorize="isAnonymous()" th:href="@{/user/login}">로그인</a>
+			<a sec:authorize="isAuthenticated()" th:href="@{/user/logout}">로그아웃</a>
+		</li>
+		<li>
+			<a th:href="@{/user/signup}">회원가입</a>
+		</li>
+	</ul>
+
+
+
+
+
+
+
+	<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+	<th:block layout:fragment="content"></th:block>
+	<!-- 기본 템플릿 안에 삽입될 내용 End -->
+	<!-- Bootstrap JS -->
+
+
+
+
+
+
+
+	<script th:src="@{/bootstrap.min.js}"></script>
+	<!-- 자바스크립트 Start -->
+	<th:block layout:fragment="script"></th:block>
+	<!-- 자바스크립트 End -->
+</body>
+
+</html>

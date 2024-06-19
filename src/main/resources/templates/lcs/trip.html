@@ -1,8 +1,5 @@
 <!doctype html>
 <html>
-
-<!--일단 마무리-->
-<!--완료-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -37,17 +34,7 @@
                     <a href="/msy/signup">회원가입</a>
                     <a href="/lcs/list">사이트맵</a>
                 </div><!--util-box : end-->
-                <div class="mob-menu-warp">
-                    <a class="mob-cart">
-                        <img src="/images/lcs_travel.png" alt="여행지 바로가기">
-                    </a>
-                    <a class="mob_menu_open">
-                        <img src="/images/mob_menu.png" alt="메뉴열기">
-                    </a>
-
-                </div>
             </div><!--top=wrap: end-->
-
         </div>
 
         <div id="bottom-wrap" class="inner"><!-- bottom-wrap : start-->
@@ -83,60 +70,65 @@
             </nav>
         </div><!-- bottom-wrap : end-->
     </header><!--header : end-->
-
     <div class="container">
-        <h1>Travel Recommendations</h1>
-        <ul>
-            <li th:each="trip : ${lcsTripList}" class="trip-item">
-                <img th:src="${trip.trip_imageUrl}" alt="Image of [[${trip.trip_name}]]">
-                <div class="trip-details">
-                    <h2 th:text="${trip.trip_name}">Destination Name</h2>
-                    <p th:text="${trip.trip_description}">Destination Description</p>
-                    <p th:text="${trip.trip_location}">Location</p>
-                    <p th:text="${trip.trip_rating}">Rating</p>
-                    <p th:text="${trip.trip_category}">Category</p>
-                    <p th:text="${trip.trip_recommended ? 'Recommended' : 'Not Recommended'}">Recommendation</p>
-                </div>
-            </li>
-        </ul>
+        <h1 class="my-4">여행리스트</h1>
+        <div th:each="destination : ${destinations}" class="destination">
+            <div class="image-container">
+                <img th:src="@{${destination.trip_imageUrl}}" th:alt="${destination.trip_name}" class="img-fluid">
+            </div>
+            <div class="info-container">
+                <h2 th:text="${destination.trip_name}"></h2>
+                <p th:text="${destination.trip_description}"></p>
+                <p><strong>Location:</strong> <span th:text="${destination.trip_location}"></span></p>
+                <p><strong>Rating:</strong> <span th:text="${destination.trip_rating}"></span></p>
+                <p><strong>Category:</strong> <span th:text="${destination.trip_category}"></span></p>
+                <p><strong>Recommended:</strong> <span th:text="${destination.trip_recommended ? 'Yes' : 'No'}"></span></p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+
     </div>
 
-    <section id="Quick" class="inner"><!-- Quick : start-->
-        <div class="Quick-title"><!--Quick-title : start-->
-            <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>
-            <div class="search-bar"><!--search-bar : start-->
-                <form>
-                    <input type="text" placeholder="무엇을 찾으시나요?">
-                    <a onclick="top_search();"><img src="/images/search-icon.png" alt="검색버튼"></a>
-                </form>
-            </div><!--search-bar : end-->
-        </div><!--Quick-title : end-->
-        <ul class="Quick-menu"><!--Quick-menu : start-->
-            <li><a href="#"><img src="/images/lcs_tripicon.png"></a>
-                <ul>
-                    <li>추천 여행지</li>
-                </ul>
-            <li><a href="#"><img src="/images/lcs_seaicon.png"></a>
-                <ul>
-                    <li>바다<br>여행지</li>
-                </ul>
-            <li><a href="#"><img src="/images/lcs_festivalicon.png"></a>
-                <ul>
-                    <li>축제</li>
-                </ul>
-            <li><a href="#"><img src="/images/lcs_comunityicon.png"></a>
-                <ul>
-                    <li>커뮤니티</li>
-                </ul>
-            <li><a href="#"><img src="/images/lcs_q&aicon.png"></a>
-                <ul>
-                    <li>1:1문의</li>
-                </ul>
-            </li>
 
-        </ul><!--Quick-menu : end-->
 
-    </section><!--Quick : end-->
+
+
+<!--    <section id="Quick" class="inner">&lt;!&ndash; Quick : start&ndash;&gt;-->
+<!--        <div class="Quick-title">&lt;!&ndash;Quick-title : start&ndash;&gt;-->
+<!--            <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>-->
+<!--            <div class="search-bar">&lt;!&ndash;search-bar : start&ndash;&gt;-->
+<!--                <form>-->
+<!--                    <input type="text" placeholder="무엇을 찾으시나요?">-->
+<!--                    <a onclick="top_search();"><img src="/images/search-icon.png" alt="검색버튼"></a>-->
+<!--                </form>-->
+<!--            </div>&lt;!&ndash;search-bar : end&ndash;&gt;-->
+<!--        </div>&lt;!&ndash;Quick-title : end&ndash;&gt;-->
+<!--        <ul class="Quick-menu">&lt;!&ndash;Quick-menu : start&ndash;&gt;-->
+<!--            <li><a href="#"><img src="/images/lcs_tripicon.png"></a>-->
+<!--                <ul>-->
+<!--                    <li>추천 여행지</li>-->
+<!--                </ul>-->
+<!--            <li><a href="#"><img src="/images/lcs_seaicon.png"></a>-->
+<!--                <ul>-->
+<!--                    <li>바다<br>여행지</li>-->
+<!--                </ul>-->
+<!--            <li><a href="#"><img src="/images/lcs_festivalicon.png"></a>-->
+<!--                <ul>-->
+<!--                    <li>축제</li>-->
+<!--                </ul>-->
+<!--            <li><a href="#"><img src="/images/lcs_comunityicon.png"></a>-->
+<!--                <ul>-->
+<!--                    <li>커뮤니티</li>-->
+<!--                </ul>-->
+<!--            <li><a href="#"><img src="/images/lcs_q&aicon.png"></a>-->
+<!--                <ul>-->
+<!--                    <li>1:1문의</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+
+<!--        </ul>&lt;!&ndash;Quick-menu : end&ndash;&gt;-->
+
+<!--    </section>&lt;!&ndash;Quick : end&ndash;&gt;-->
     <section id="last-info" class="inner"><!--last-info : start-->
         <div class="banner-box"><!--banner-box : start-->
             <a href="#"><img src="/images/lcs_busan_Event.png" alt="이벤트 배너"></a>

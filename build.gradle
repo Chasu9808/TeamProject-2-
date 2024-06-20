@@ -29,6 +29,10 @@ repositories {
 }
 
 dependencies {
+    //json 방식으로 공공데이터가 처리되어 XmlMapper 사용을 위한 build 설치
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.3'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'

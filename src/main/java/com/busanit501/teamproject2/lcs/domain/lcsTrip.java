@@ -1,14 +1,12 @@
 package com.busanit501.teamproject2.lcs.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "lcstrip")
 @Data
+@EqualsAndHashCode(callSuper=false)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,7 +21,7 @@ public class lcsTrip extends BaseEntity{
     private String trip_name;
     // 여행지 명칭
 
-    @Column(nullable = false)
+    @Column(length = 2000, nullable = false)
     private String trip_description;
     // 여행지 설명
 

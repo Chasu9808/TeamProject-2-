@@ -1,5 +1,9 @@
 <!doctype html>
-<html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}"
+>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -20,6 +24,7 @@
 </head>
 
 <body>
+<div layout:fragment="content">
 <div id="wrap">
 
     <header id="header"><!--header : start-->
@@ -88,47 +93,6 @@
         </div>
 
     </div>
-
-
-
-
-
-<!--    <section id="Quick" class="inner">&lt;!&ndash; Quick : start&ndash;&gt;-->
-<!--        <div class="Quick-title">&lt;!&ndash;Quick-title : start&ndash;&gt;-->
-<!--            <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>-->
-<!--            <div class="search-bar">&lt;!&ndash;search-bar : start&ndash;&gt;-->
-<!--                <form>-->
-<!--                    <input type="text" placeholder="무엇을 찾으시나요?">-->
-<!--                    <a onclick="top_search();"><img src="/images/search-icon.png" alt="검색버튼"></a>-->
-<!--                </form>-->
-<!--            </div>&lt;!&ndash;search-bar : end&ndash;&gt;-->
-<!--        </div>&lt;!&ndash;Quick-title : end&ndash;&gt;-->
-<!--        <ul class="Quick-menu">&lt;!&ndash;Quick-menu : start&ndash;&gt;-->
-<!--            <li><a href="#"><img src="/images/lcs_tripicon.png"></a>-->
-<!--                <ul>-->
-<!--                    <li>추천 여행지</li>-->
-<!--                </ul>-->
-<!--            <li><a href="#"><img src="/images/lcs_seaicon.png"></a>-->
-<!--                <ul>-->
-<!--                    <li>바다<br>여행지</li>-->
-<!--                </ul>-->
-<!--            <li><a href="#"><img src="/images/lcs_festivalicon.png"></a>-->
-<!--                <ul>-->
-<!--                    <li>축제</li>-->
-<!--                </ul>-->
-<!--            <li><a href="#"><img src="/images/lcs_comunityicon.png"></a>-->
-<!--                <ul>-->
-<!--                    <li>커뮤니티</li>-->
-<!--                </ul>-->
-<!--            <li><a href="#"><img src="/images/lcs_q&aicon.png"></a>-->
-<!--                <ul>-->
-<!--                    <li>1:1문의</li>-->
-<!--                </ul>-->
-<!--            </li>-->
-
-<!--        </ul>&lt;!&ndash;Quick-menu : end&ndash;&gt;-->
-
-<!--    </section>&lt;!&ndash;Quick : end&ndash;&gt;-->
     <section id="last-info" class="inner"><!--last-info : start-->
         <div class="banner-box"><!--banner-box : start-->
             <a href="#"><img src="/images/lcs_busan_Event.png" alt="이벤트 배너"></a>
@@ -230,7 +194,7 @@
         </div>
     </footer><!-- footer : end-->
 </div><!--wrap-->
-
+</div>
 </body>
 
 </html>

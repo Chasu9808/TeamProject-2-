@@ -37,5 +37,6 @@ public class lcsTrip extends BaseEntity{
     private boolean trip_recommended;
 
     @Column(nullable = false)
-    private String trip_imageUrl;
+    private String
+            trip_imageUrl;
 }

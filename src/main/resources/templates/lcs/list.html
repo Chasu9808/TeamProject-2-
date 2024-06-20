@@ -7,20 +7,17 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 
-    <title>서초여성가족플라자 잠원센터</title>
-    <!--[if lt IE 9]>
-    <script src="/static/js/html5.js"></script>
-    <![endif]-->
-    <link href="/css/common.css" rel="stylesheet" type="text/css">
-    <link href="/css/swiper-min.css" rel="stylesheet" type="text/css">
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="./css/slick.css">
-    <script src="/static/js/html5.js" type="text/javascript"></script>
-    <script src="/static/js/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/jquery-migrate-3.0.0.js"></script>
-    <script src="/static/js/slick.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/static/js/main.js"></script>
+    <title>TripWithMe 페이지</title>
 
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper-min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/slick.css}" rel="stylesheet">
+    <script th:src="@{/js/html5.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script src="http://code.jquery.com/jquery-migrate-3.0.0.js"></script>
+    <script th:src="@{/js/slick.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
 </head>
 
 <body>
@@ -31,16 +28,16 @@
         <div class="header-line">
             <div class="top-wrap inner"> <!--top=wrap : start-->
                 <div class="logo-box"><!--logo : start-->
-                    <a href="#"><img src="/images/logo.png" alr="서초여성가족플라자 바로가기"></a>
+                    <a href="/lcs/list"><img src="/images/lcs_logo.png" alr="메인페이지 바로가기"></a>
                 </div><!--logo : end-->
                 <div class="util-box"><!--util-box : start-->
-                    <a href="#">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">사이트맵</a>
+                    <a href="/msy/login">로그인</a>
+                    <a href="/msy/signup">회원가입</a>
+                    <a href="/lcs/list">사이트맵</a>
                 </div><!--util-box : end-->
                 <div class="mob-menu-warp">
                     <a class="mob-cart">
-                        <img src="/images/free-icon-add-cart-9972373.png" alt="장바구니 바로가기">
+                        <img src="/images/lcs_travel.png" alt="여행지 바로가기">
                     </a>
                     <a class="mob_menu_open">
                         <img src="/images/mob_menu.png" alt="메뉴열기">
@@ -61,34 +58,26 @@
                 <div class="mob_util_wrap">
                     <div class="mob_util_box">
                         <ul>
-
-                            <li><a href="/member/login.do">로그인</a></li>
-
-                            <li><i class="far fa-user-circle"></i> <a href="/member/step1.do">회원가입</a></li>
-
-
-
-
+                            <li><a href="/msy/login">로그인</a></li>
+                            <li><i class="far fa-user-circle"></i> <a href="/msy/signup">회원가입</a></li>
                         </ul>
                     </div>
 
                     <div class="search_box">
                         <form name="topfrm" id="topfrm" method="post">
                             <input type="hidden" id="objTab" name="objTab" value="1">
-
                             <input type="text" name="profileclass_nm" id="profileclass_nm" onkeypress="if(event.keyCode==13){top_search(); return false;}" placeholder="검색어를 입력하세요">
                             <a onclick="top_search();"><img src="/images/new_search.png" alt="검색버튼"></a>
                         </form>
                     </div>
-
                 </div>
 
                 <div id="mob_menu">
                     <ul class="mob_menu_wrap">
-                        <li><a href="javascript:void(0);" class="tit">교육수강신청</a>
+                        <li><a href="javascript:void(0);" class="tit">여행지</a>
                             <ul class="sub_menu">
-                                <li><a href="https://www.women.co.kr/sub02/sub2_5.do">교육수강신청</a></li>
-                                <li><a href="https://www.women.co.kr/sub02/sub2_7.do">강사단교육신청</a></li>
+                                <li><a href="https://www.women.co.kr/sub02/sub2_5.do">추천여행지</a></li>
+                                <li><a href="https://www.women.co.kr/sub02/sub2_7.do">랜덤여행지</a></li>
                                 <li>
                                     <a href="javascript:void(0);" class="sub_tit">수강신청안내</a>
                                     <ol class="depth_menu bu">
@@ -180,86 +169,65 @@
             <nav>
                 <ul class="nav-box"><!-- nav-box : start-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="#">교육수강신청</a>
+                        <a href="/lcs/trip">여행지</a>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">교육수강신청</a></li>
-                            <li><a href="#">강사단교육신청</a></li>
-                            <li><a href="#">심리상담센터신청</a></li>
-                            <li><a href="#">수강신청안내</a></li>
-                            <li><a href="#">사물함신청</a></li>
+                            <li><a href="/lcs/trip_best">추천 여행지</a></li>
+                            <li><a href="/lcs/trip_random">랜덤 여행지</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="#">사업소개</a>
+                        <a href="/ohj/festival">축제</a>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">경력키움사업</a></li>
-                            <li><a href="#">사물함신청</a></li>
-                            <li><a href="#">심리상담및치료</a></li>
-                            <li><a href="#">이혼가정면접교섭</a></li>
-                            <li><a href="#">양성평등활동사업</a></li>
-                            <li><a href="#">외부공모사업</a></li>
+                            <li><a href="#">축제 리스트</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="#">커뮤니티</a>
+                        <a href="/lcs/trip_select">맞춤 여행지</a>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">교육안내</a></li>
-                            <li><a href="#">e-book</a></li>
-                            <li><a href="#">언론보도·보도자료</a></li>
-                            <li><a href="#">사진·영상자료</a></li>
-                            <li><a href="#">교육제안·강사신청</a></li>
-                            <li><a href="#">자주묻는질문</a></li>
-                            <li><a href="#">1대1질문</a></li>
+                            <li><a href="#">맞춤 여행지</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="#">기관소개</a>
+                        <a href="/hjt/comunity">커뮤니티</a>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">인사말</a></li>
-                            <li><a href="#">법인소개</a></li>
-                            <li><a href="#">미션비전</a></li>
-                            <li><a href="#">연혁</a></li>
-                            <li><a href="#">조직도</a></li>
-                            <li><a href="#">시설안내</a></li>
-                            <li><a href="#">찾아오시는 길</a></li>
+                            <li><a href="hjt/realchat">트립톡</a></li>
+                            <li><a href="hjt/board">여행 게시판</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                 </ul><!-- nav-box : end-->
             </nav>
         </div><!-- bottom-wrap : end-->
-
     </header><!--header : end-->
     <section id="main-slide" class="inner"><!--main-slide : start-->
         <div class="lazy slider" data-sizes="50vw">
             <div>
-                <a href="#"><img src="/images/main-slide.png" data-sizes="100vw"></a>
+                <a href="#"><img src="/images/lcs_busan1.jpeg" data-sizes="100vw"></a>
             </div>
             <div>
-                <a href="#"><img src="/images/main-slide2.png" data-sizes="100vw"></a>
+                <a href="#"><img src="/images/lcs_busan2.jpeg" data-sizes="100vw"></a>
             </div>
             <div>
-                <a href="#"><img src="/images/main-slide3.png" data-sizes="100vw"></a>
+                <a href="#"><img src="/images/lcs_busan3.jpeg" data-sizes="100vw"></a>
             </div>
             <div>
-                <a href="#"><img src="/images/main-slide4.png" data-sizes="100vw"></a>
+                <a href="#"><img src="/images/lcs_busan4.jpeg" data-sizes="100vw"></a>
             </div>
         </div>
     </section><!--main-slide : end -->
-    <section id="center-banner" class="inner"><!--site-banner : start-->
-        <div class="center">
-            <a href="#">경력키움센터</a>
-        </div>
-        <div class="center">
-            <a href="#">서초구양성평등활동센터</a>
-        </div>
-        <div class="center">
-            <a href="#">서초심리상담센터</a>
-        </div>
-        <div class="center">
-            <a href="#">서초이음누리센터</a>
-        </div>
-    </section><!--site-banner : end-->
+<!--    <section id="center-banner" class="inner">&lt;!&ndash;site-banner : start&ndash;&gt;-->
+<!--        <div class="center">-->
+<!--            <a href="#">경력키움센터</a>-->
+<!--        </div>-->
+<!--        <div class="center">-->
+<!--            <a href="#">서초구양성평등활동센터</a>-->
+<!--        </div>-->
+<!--        <div class="center">-->
+<!--            <a href="#">서초심리상담센터</a>-->
+<!--        </div>-->
+<!--        <div class="center">-->
+<!--            <a href="#">서초이음누리센터</a>-->
+<!--        </div>-->
+<!--    </section>&lt;!&ndash;site-banner : end&ndash;&gt;-->
     <section id="Quick" class="inner"><!-- Quick : start-->
         <div class="Quick-title"><!--Quick-title : start-->
             <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>
@@ -271,25 +239,25 @@
             </div><!--search-bar : end-->
         </div><!--Quick-title : end-->
         <ul class="Quick-menu"><!--Quick-menu : start-->
-            <li><a href="#"><img src="images/navi1_off.png"></a>
+            <li><a href="#"><img src="/images/lcs_tripicon.png"></a>
                 <ul>
-                    <li>수강신청</li>
+                    <li>추천 여행지</li>
                 </ul>
-            <li><a href="#"><img src="images/navi2_off.png"></a>
+            <li><a href="#"><img src="/images/lcs_seaicon.png"></a>
                 <ul>
-                    <li>온라인클래스<br>수강신청</li>
+                    <li>바다<br>여행지</li>
                 </ul>
-            <li><a href="#"><img src="images/navi3_off.png"></a>
+            <li><a href="#"><img src="/images/lcs_festivalicon.png"></a>
                 <ul>
-                    <li>시간표</li>
+                    <li>축제</li>
                 </ul>
-            <li><a href="#"><img src="images/navi4_off.png"></a>
+            <li><a href="#"><img src="/images/lcs_comunityicon.png"></a>
                 <ul>
-                    <li>1:1질문</li>
+                    <li>커뮤니티</li>
                 </ul>
-            <li><a href="#"><img src="images/navi5_off.png"></a>
+            <li><a href="#"><img src="/images/lcs_q&aicon.png"></a>
                 <ul>
-                    <li>오시는 길</li>
+                    <li>1:1문의</li>
                 </ul>
             </li>
 
@@ -298,7 +266,7 @@
     </section><!--Quick : end-->
     <section id="main-education" class="inner"><!-- main-education : start-->
         <div class="edu-title"><!--edu-title : start-->
-            <h2><span>추천교육</span>을<br>확인해보세요!</h2>
+            <h2><span>추천여행</span>을<br>확인해보세요!</h2>
             <button type="button" class="btn_pause">
                 play
             </button>
@@ -307,14 +275,15 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img1.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best1.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>초량 이바구길 168계단
+                            <br>특별한 이야기 길을 통하여 새로운 부산을 느껴보세요!!! </h3>
+                        <p>모노레일 이용시간 07:00 ~ 21:00 (6월 ~ 9월)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>모노레일 탑승정원 최대8명</p>
+                            <h2>0<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -322,14 +291,15 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img2.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best2.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>누리마루 APEC 하우스 동백섬의 능선을 형상화한 건물
+                            역대 정상회의장 최고의 경치느껴보세요!</h3>
+                        <p>9:00 ~ 17:00 (월요일휴무)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -337,14 +307,14 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img3.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best3.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>광안리 해수욕장 매년 열리는 불꽃축제와 시원한 바다로 여름의 스트레스를 날려버리세요!!!</h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -352,14 +322,14 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img4.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best4.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>감천문화마을 골목골목마다 귀여운 그림과 조영물들로 나만의 작은 부산을 눈에 품고 가세요!!!</h3>
+                        <p>09:00 ~ 18:00 (매일)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원 없음</p>
+                            <h2>가이드북 2000<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -367,14 +337,14 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img1.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best5.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>부산 차이나타운 부산안에서만 맛 볼 수 있는 0원으로 즐기는 중국여행!! </h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -382,14 +352,14 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img2.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best6.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>부산 송도해수욕장 이번 여름엔 탁 트인 바다 송도스카이워크의 구름산책로 어때요???</h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -397,14 +367,14 @@
             <div class="slide-box"><!--slide-box : start-->
                 <a href="#">
                     <div class="img-box"><!--img-box : start-->
-                        <img src="/images/edu-img3.jpg" alt="강의 배너 이미지">
+                        <img src="/images/lcs_busan_best7.png" alt="여행지 배너 이미지">
                     </div><!--img-box : end-->
                     <div class="text-box"><!--text-box : start-->
-                        <h3>101-그림책 읽어주는 엄마, 아빠(만1~2세 부모교육)</h3>
-                        <p>10:00 ~ 12:00 (화)</p>
+                        <h3>부산아쿠아리움 이번 여름도 찾아온 시원하고 신기한 바닷속 생물구경 물고기천국????</h3>
+                        <p>10:00 ~ 20:00 (월~목)<br>09:00 ~ 22:00 (금 ~ 공휴일)</p>
                         <div class="pay-box"><!-- pay-box : start-->
-                            <p>정원 12명</p>
-                            <h2>105,500<span>원</span></h2>
+                            <p>정원없음</p>
+                            <h2>평균가<span>약23000원</span></h2>
                         </div><!--pay-box : end-->
                     </div><!-- text-box : end-->
                 </a>
@@ -414,263 +384,348 @@
         <div class="background"></div>
 
     </section><!--main-education : end-->
-    <section id="notice" class="inner"><!--notice : start-->
-        <div class="board"><!-- board : start-->
-            <div class="tabSet">
-                <div class="tabs-wrap"><!-- tabs-wrap : start-->
-                    <ul class="tabs">
-                        <li><a phref="#panel1-1" class="on">교육안내</a></li>
-                        <li><a phref="#panel1-2">공지사항</a></li>
-                        <li><a phref="#panel1-3">언론보도</a></li>
-                    </ul>
-                    <a href="#" class="plus-btn">더보기</a>
-                </div><!-- tabs-wrap : end-->
-                <div class="panels">
-                    <div class="panel" id="panel1-1"><!--panel : start-->
-                        <div class="top-board"><!-- top-board : start-->
-                            <a href="#">
-                                <div>
-                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>
-                                    <span>NEW</span>
-                                </div>
-                                <p class="day">2023-05-24</p>
-                            </a>
-                        </div><!--top-board : end-->
-                        <div class="bottom-board"><!-- bottom-boart : start-->
-                            <ul>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                            </ul>
-                        </div><!--bottom-board : end-->
-                    </div><!-- panel : end-->
-                    <div class="panel" id="panel1-2">
-                        <div class="top-board"><!-- top-board : start-->
-                            <a href="#">
-                                <div>
-                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>
-                                    <span>NEW</span>
-                                </div>
-                                <p class="day">2023-05-24</p>
-                            </a>
-                        </div><!--top-board : end-->
-                        <div class="bottom-board"><!-- bottom-boart : start-->
-                            <ul>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                            </ul>
-                        </div><!--bottom-board : end-->
-                    </div>
-                    <div class="panel" id="panel1-3">
-                        <div class="top-board"><!-- top-board : start-->
-                            <a href="#">
-                                <div>
-                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>
-                                    <span>NEW</span>
-                                </div>
-                                <p class="day">2023-05-24</p>
-                            </a>
-                        </div><!--top-board : end-->
-                        <div class="bottom-board"><!-- bottom-boart : start-->
-                            <ul>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>
-                                        <span>NEW</span>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                                <li>
-                                    <div>
-                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>
-                                    </div>
-                                    <p>2023-05-24</p>
-                                </li>
-                            </ul>
-                        </div><!--bottom-board : end-->
-                    </div>
-                    <!-- /panels -->
-                </div>
-                <!-- /tabset -->
-            </div>
-        </div><!--board : end-->
-        <div class="program"><!-- program : start-->
-            <div class="img-box"><!--img-box : start-->
-                <a href="#"><img src="/images/e-book.jpg"></a>
-            </div><!--img-box : end-->
-        </div><!-- program : end-->
-        <div class="e-book-mob"><!--e-book-mob : start-->
-            <a href="#">
-                <p>E-book <span>교육 프로그램 안내</span></p>
-            </a>
-        </div><!--e-book-mob : end-->
-    </section><!--notice : end-->
+<!--    <section id="notice" class="inner">&lt;!&ndash;notice : start&ndash;&gt;-->
+<!--        <div class="board">&lt;!&ndash; board : start&ndash;&gt;-->
+<!--            <div class="tabSet">-->
+<!--                <div class="tabs-wrap">&lt;!&ndash; tabs-wrap : start&ndash;&gt;-->
+<!--                    <ul class="tabs">-->
+<!--                        <li><a phref="#panel1-1" class="on">교육안내</a></li>-->
+<!--                        <li><a phref="#panel1-2">공지사항</a></li>-->
+<!--                        <li><a phref="#panel1-3">언론보도</a></li>-->
+<!--                    </ul>-->
+<!--                    <a href="#" class="plus-btn">더보기</a>-->
+<!--                </div>&lt;!&ndash; tabs-wrap : end&ndash;&gt;-->
+<!--                <div class="panels">-->
+<!--                    <div class="panel" id="panel1-1">&lt;!&ndash;panel : start&ndash;&gt;-->
+<!--                        <div class="top-board">&lt;!&ndash; top-board : start&ndash;&gt;-->
+<!--                            <a href="#">-->
+<!--                                <div>-->
+<!--                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>-->
+<!--                                    <span>NEW</span>-->
+<!--                                </div>-->
+<!--                                <p class="day">2023-05-24</p>-->
+<!--                            </a>-->
+<!--                        </div>&lt;!&ndash;top-board : end&ndash;&gt;-->
+<!--                        <div class="bottom-board">&lt;!&ndash; bottom-boart : start&ndash;&gt;-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>&lt;!&ndash;bottom-board : end&ndash;&gt;-->
+<!--                    </div>&lt;!&ndash; panel : end&ndash;&gt;-->
+<!--                    <div class="panel" id="panel1-2">-->
+<!--                        <div class="top-board">&lt;!&ndash; top-board : start&ndash;&gt;-->
+<!--                            <a href="#">-->
+<!--                                <div>-->
+<!--                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>-->
+<!--                                    <span>NEW</span>-->
+<!--                                </div>-->
+<!--                                <p class="day">2023-05-24</p>-->
+<!--                            </a>-->
+<!--                        </div>&lt;!&ndash;top-board : end&ndash;&gt;-->
+<!--                        <div class="bottom-board">&lt;!&ndash; bottom-boart : start&ndash;&gt;-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>&lt;!&ndash;bottom-board : end&ndash;&gt;-->
+<!--                    </div>-->
+<!--                    <div class="panel" id="panel1-3">-->
+<!--                        <div class="top-board">&lt;!&ndash; top-board : start&ndash;&gt;-->
+<!--                            <a href="#">-->
+<!--                                <div>-->
+<!--                                    <h2>[가족센터] 2023년 3차 서초손주돌보미 양성교육 교육생 모집</h2>-->
+<!--                                    <span>NEW</span>-->
+<!--                                </div>-->
+<!--                                <p class="day">2023-05-24</p>-->
+<!--                            </a>-->
+<!--                        </div>&lt;!&ndash;top-board : end&ndash;&gt;-->
+<!--                        <div class="bottom-board">&lt;!&ndash; bottom-boart : start&ndash;&gt;-->
+<!--                            <ul>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움x방배유스센터] 엔트리와 메이키메이키로 만드는 코딩과정 참가자(초 4~6) 모집</a>-->
+<!--                                        <span>NEW</span>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[경력키움] 강사 인큐베이팅과정 교실안세계여행 강사 모집 모집기간 연장 ~5/24(수)</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[2023년 서리풀 공정무역 페스티벌] "세상을 바꾸는 착한 소비여행"</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                                <li>-->
+<!--                                    <div>-->
+<!--                                        <a href="#">[전문가양성] "예술감성 강사양성", "영어스토리텔링 강사양성" 수강생 선발 공고</a>-->
+<!--                                    </div>-->
+<!--                                    <p>2023-05-24</p>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>&lt;!&ndash;bottom-board : end&ndash;&gt;-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; /panels &ndash;&gt;-->
+<!--                </div>-->
+<!--                &lt;!&ndash; /tabset &ndash;&gt;-->
+<!--            </div>-->
+<!--        </div>&lt;!&ndash;board : end&ndash;&gt;-->
+<!--        <div class="program">&lt;!&ndash; program : start&ndash;&gt;-->
+<!--            <div class="img-box">&lt;!&ndash;img-box : start&ndash;&gt;-->
+<!--                <a href="#"><img src="/images/e-book.jpg"></a>-->
+<!--            </div>&lt;!&ndash;img-box : end&ndash;&gt;-->
+<!--        </div>&lt;!&ndash; program : end&ndash;&gt;-->
+<!--        <div class="e-book-mob">&lt;!&ndash;e-book-mob : start&ndash;&gt;-->
+<!--            <a href="#">-->
+<!--                <p>E-book <span>교육 프로그램 안내</span></p>-->
+<!--            </a>-->
+<!--        </div>&lt;!&ndash;e-book-mob : end&ndash;&gt;-->
+<!--    </section>&lt;!&ndash;notice : end&ndash;&gt;-->
 
-    <section id="introduce-edu"><!--introduce-edu : start-->
-        <div class="content-wrap inner"><!--content-wrap : start-->
-            <div class="title"><!--title : start-->
-                <div class="title-top"><!--title-top : start-->
-                    <h2><span>어떤 교육</span>을 찾으세요?</h2>
-                    <p>서초여성가족플라자의 다양한 교육을 확인해보세요!</p>
-                </div><!-- title-top : end-->
-                <a href="#">자세히 보기</a>
-            </div><!--title : end-->
-            <div class="icon-warp"><!--icon-warp : start-->
-                <a href="#">
-                    <img src="/images/icon1.png" alt="유아 아이콘">
-                    <p>유아</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon2.png" alt="유아 아이콘">
-                    <p>어르신</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon3.png" alt="유아 아이콘">
-                    <p>요리</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon4.png" alt="유아 아이콘">
-                    <p>공예·기능</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon5.png" alt="유아 아이콘">
-                    <p>어학</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon6.png" alt="유아 아이콘">
-                    <p>IT</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon7.png" alt="유아 아이콘">
-                    <p>인문학</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon8.png" alt="유아 아이콘">
-                    <p>음악</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon9.png" alt="유아 아이콘">
-                    <p>미술</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon10.png" alt="유아 아이콘">
-                    <p>건강</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon11.png" alt="유아 아이콘">
-                    <p>전문가 양성</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon12.png" alt="유아 아이콘">
-                    <p>자격증</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon13.png" alt="유아 아이콘">
-                    <p>심리교육</p>
-                </a>
-                <a href="#">
-                    <img src="/images/icon14.png" alt="유아 아이콘">
-                    <p>특강</p>
-                </a>
-            </div><!--icon-warp : end-->
-        </div>
-    </section><!--introduce-edu : end-->
+<!--    <section id="introduce-edu">&lt;!&ndash;introduce-edu : start&ndash;&gt;-->
+<!--        <div class="content-wrap inner">&lt;!&ndash;content-wrap : start&ndash;&gt;-->
+<!--            <div class="title">&lt;!&ndash;title : start&ndash;&gt;-->
+<!--                <div class="title-top">&lt;!&ndash;title-top : start&ndash;&gt;-->
+<!--                    <h2><span>어떤 교육</span>을 찾으세요?</h2>-->
+<!--                    <p>서초여성가족플라자의 다양한 교육을 확인해보세요!</p>-->
+<!--                </div>&lt;!&ndash; title-top : end&ndash;&gt;-->
+<!--                <a href="#">자세히 보기</a>-->
+<!--            </div>&lt;!&ndash;title : end&ndash;&gt;-->
+<!--            <div class="icon-warp">&lt;!&ndash;icon-warp : start&ndash;&gt;-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon1.png" alt="유아 아이콘">-->
+<!--                    <p>유아</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon2.png" alt="유아 아이콘">-->
+<!--                    <p>어르신</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon3.png" alt="유아 아이콘">-->
+<!--                    <p>요리</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon4.png" alt="유아 아이콘">-->
+<!--                    <p>공예·기능</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon5.png" alt="유아 아이콘">-->
+<!--                    <p>어학</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon6.png" alt="유아 아이콘">-->
+<!--                    <p>IT</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon7.png" alt="유아 아이콘">-->
+<!--                    <p>인문학</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon8.png" alt="유아 아이콘">-->
+<!--                    <p>음악</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon9.png" alt="유아 아이콘">-->
+<!--                    <p>미술</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon10.png" alt="유아 아이콘">-->
+<!--                    <p>건강</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon11.png" alt="유아 아이콘">-->
+<!--                    <p>전문가 양성</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon12.png" alt="유아 아이콘">-->
+<!--                    <p>자격증</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon13.png" alt="유아 아이콘">-->
+<!--                    <p>심리교육</p>-->
+<!--                </a>-->
+<!--                <a href="#">-->
+<!--                    <img src="/images/icon14.png" alt="유아 아이콘">-->
+<!--                    <p>특강</p>-->
+<!--                </a>-->
+<!--            </div>&lt;!&ndash;icon-warp : end&ndash;&gt;-->
+<!--        </div>-->
+<!--    </section>&lt;!&ndash;introduce-edu : end&ndash;&gt;-->
+
     <section id="review-warp" class="inner"><!--review-warp : start-->
-        <h2>수강생 한 줄 <span>후기</span></h2>
-        <p>잠원센터와 함께한 수강생들의솔직한 후기를 만나보세요.</p>
+        <h2>여행객 한 줄 <span>후기</span></h2>
+        <p>여행객 분들의 생생한 한줄후기를 만나보세요</p>
         <div class="content-box"><!--content-box : start-->
             <ul id="rolling_notice" class="rolling">
                 <li>
                     <div class="img-box"><!--img-box : start-->
                         <div class="icon">
-                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
                         </div>
-                        <p>mic***</p>
+                        <p>lcs***</p>
                     </div><!--img-box : end-->
                     <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
+                        <h2>초량 이바구길 168계단</h2>
+                        <p>(구)백제병원 건물로부터 168계단이 있는 곳까지 가려면 조금 걸어야 하는데 문득 본인이
+                            잘 가고 있는지는 걱정할 필요가 없습니다. 중간중간에 계단에도 이렇게 위치를 알려주는 곳이 있어 잘 보고 가시면 길 잃어버릴 일이 없어요! 또한 이바구길에서만 찾아볼 수 있는 포토존도 있어 이곳에서도 사진 많이 찍어가시길 바랄게요!
+<!--                            [출처] 부산여행의 시작은 바로 이곳에서! 초량 이바구길 방문기①|작성자 대한민국 행정안전부-->
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>lsy***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>초량 이바구길 168계단</h2>
+                        <p>168계단 바로 앞에 도착했는데 생각보다 경사가 엄청나다는 것을 실감하실 수 있습니다. 하지만 케이블카 있습니다...
+                            저처럼 모르고 생고생하지마십셔 풍경은 절경 그자체입니다!!!
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>csh***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>광안리 해수욕장</h2>
+                        <p> 실제로 다녀오니깐 생각보다 볼거리와 놀거리가 많았고 오락실에서도 매우 재밌게 놀았습니다.
+                            또 거기 주변에 샤브향이라는 맛집있었는데 거기 가서 음식을 먹었을 때 되게
+                            맛있게 먹었던 기억이 남아있습니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>dga***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>부산 차이나타운</h2>
+                        <p> 부산 최대의 중국인 거주 지역입니다.
+                            이 곳에는 화교학교와 먹방 TV프로그램에 나온 만두 맛집뿐 아니라 많은 중국인들이 운영하는 음식점들이
+                            밀집한 곳입니다. 거리를 온통 홍등으로 장식하여 중국 분위기를 느낄 수 있습니다.
+                            초량 이바구길 구경을 끝내고 내려오는 길에 들렀다 가면 좋을 듯 합니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>msy***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>영도 절영전망대</h2>
+                        <p>영도 하늘전망대에서 바라보는 풍경은 이로 말할것도 없었다... 백문이 불여일견 다녀오는걸 추천합니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>hjt***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>감천 문화마을</h2>
+                        <p>사진찍기 좋아한다 하면 꼭 가보자 정말 다향한 그림과 거리들을 보며 나만의
+                            부산을 손에 얻고 돌아올 수 있어 강추한다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>ohj***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>부산 아쿠아리움</h2>
+                        <p>주말에 방문했는데 가격은 조금 있었지만 인터넷을 통하면 저렴하게 구입할 수 있다. 개인적으로 돈값은 한듯
                         </p>
                     </a> <!--text-box : end-->
                 </li>
@@ -682,107 +737,9 @@
                         <p>mic***</p>
                     </div><!--img-box : end-->
                     <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
-                        </p>
-                    </a> <!--text-box : end-->
-                </li>
-                <li>
-                    <div class="img-box"><!--img-box : start-->
-                        <div class="icon">
-                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
-                        </div>
-                        <p>mic***</p>
-                    </div><!--img-box : end-->
-                    <a href="#" class="text-box"><!--text-box : start -->
-                        <h2>흔한 정신건강문제와 사례관리 PART.1</h2>
-                        <p>꽃이 찾아 가장 아니다. 내려온 그들의 간에 같이, 길을 있으랴? 따뜻한 없으면, 청춘의 그들은 청춘은 타오르고 밥을 커다란 인생을 위하여서. 길을 찾아 생명을 노년에게서 풀이 같지
-                            사막이다. 곳으로 기쁘며, 가치를 새가 관현악이며, 예수는 인류의 광야에서
-                            있으랴? 인생을 원질이 설레는 곳이 것은 되려니와, 듣는다. 평화스러운 가치를 같이 듣는다. 이성은 풀이 긴지라 우리의 황금시대의 끓는 되는 있는 아름다우냐? 설레는 따뜻한 기쁘며,
-                            인간의 얼음이 황금시대다. 못할 풀이 오직 하여도 피는 그들에게 운다.없으면, 평화스러운 두손을 부패뿐이다. 눈에 살 온갖 꽃이 열매를 무엇을 하는 인생에 듣는다. 그것을 이 불어 피다.
+                        <h2>부산 송도 해수욕장</h2>
+                        <p> 탁트인 바다 특히 구름산책로로 걸어가며 바라보는 밑의 풍경이란
+                            크으... 시원한 바닷바람 느끼고 왔다 개인적으로 강추!!!
                         </p>
                     </a> <!--text-box : end-->
                 </li>
@@ -792,50 +749,49 @@
     </section><!-- review-warp :end-->
     <section id="information" class="inner"><!-- information : start-->
         <div class="information-left"><!--information-left : start-->
-            <p class="title">기관소개</p>
+            <p class="title">축제소개</p>
             <div class="regular slider">
                 <div>
-                    <a href="#"><img src="/images/info1.jpg" alt="잠원센터 소개 영상">
+                    <a href="#"><img src="/images/lcs_busan_festival1.jpg" alt="조선통신사축제">
                     </a>
-                    <p class="text">잠원센터 소개 영상</p>
-
+                    <p class="text">조선통신사축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info2.jpg" alt="잠원센터 안내 책자"></a>
-                    <p class="text">잠원센터 안내 책자</p>
+                    <a href="#"><img src="/images/lcs_busan_festival2.jpg" alt="부산연등축제"></a>
+                    <p class="text">부산연등축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info3.jpg" alt="[잠원]101기 교육 안내지"></a>
-                    <p class="text">[잠원]101기 교육 안내지</p>
+                    <a href="#"><img src="/images/lcs_busan_festival3.jpg" alt="정월대보름달맞이축제"></a>
+                    <p class="text">정월대보름달맞이축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info4.jpg" alt="서초심리상담센터[잠원]"></a>
-                    <p class="text">서초심리상담센터[잠원]</p>
+                    <a href="#"><img src="/images/lcs_busan_festival4.jpg" alt="해운대모래축제"></a>
+                    <p class="text">해운대모래축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info5.jpg" alt="서초심리상담센터[내곡]"></a>
-                    <p class="text">서초심리상담센터[내곡]</p>
+                    <a href="#"><img src="/images/lcs_busan_festival5.jpg" alt="수국꽃문화축제"></a>
+                    <p class="text">수국꽃문화축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info6.jpg" alt="서초이음누리센터"></a>
-                    <p class="text">서초이음누리센터</p>
+                    <a href="#"><img src="/images/lcs_busan_festival6.jpg" alt="부산바다축제"></a>
+                    <p class="text">부산바다축제</p>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/info7.jpg" alt="서초구양성평등활동센터"></a>
-                    <p class="text">서초구양성평등활동센터</p>
+                    <a href="#"><img src="/images/lcs_busan_festival7.jpg" alt="부산불꽃축제"></a>
+                    <p class="text">부산불꽃축제</p>
                 </div>
             </div>
         </div><!--information-left : end-->
     </section><!-- information : end-->
     <section id="last-info" class="inner"><!--last-info : start-->
         <div class="banner-box"><!--banner-box : start-->
-            <a href="#"><img src="/images/20230309150851000009.jpg" alt="이벤트 배너"></a>
+            <a href="#"><img src="/images/lcs_busan_Event.png" alt="이벤트 배너"></a>
         </div><!--banner-box : end-->
         <div class="sqa"><!--sqa : start-->
             <p class="title">무엇이 궁금하신가요?</p>
             <div class="content"><!--content : start-->
                 <div class="phon"><!--phon : start-->
-                    <p>02-522-0291</p>
+                    <p>010-9810-8268</p>
                     <a href="#">자주묻는질문</a>
                 </div><!--phon : end-->
                 <div class="time"><!--time : start-->
@@ -848,7 +804,7 @@
     </section><!--last-info : end-->
     <section id="sns"class="inner"><!--sns : start-->
         <div class="sns-left"><!--sns-left : start-->
-            <h2>서초여성가족플라자 잠원센터<span>SNS</span></h2>
+            <h2>Trip With Me<span>SNS</span></h2>
             <p>실시간 소식을 편리하게 확인해보세요!</p>
         </div><!--sns-left : end-->
         <div class="sns-right"><!--sns-right : start-->
@@ -891,7 +847,7 @@
     <footer id="footer-wrap"> <!-- footer : start-->
         <div class="inner">
             <div class="logo-sns"><!--logo-sns :start-->
-                <img src="/images/footer-logo.png" alt="로고이미지">
+                <img src="/images/lcs_footer_logo.png" alt="로고이미지">
                 <div class="sns"><!--sns : start-->
                     <a href="https://blog.naver.com/seochowomen" target="_blank"><img src="/images/footer-naver.png" alt="네이버 sns 바로가기"></a>
                     <a href="https://www.facebook.com/seochowomen2016" target="_blank"><img src="/images/footer-facebook.png" alt="페이스북 sns 바로가기"></a>
@@ -910,46 +866,46 @@
                 </div>
                 <div class="family">
                     <a href="#" class="click" onclick="return false">
-                        관련 사이트<i class="icon" role="img"></i>
+                        퀵 리스트<i class="icon" role="img"></i>
                     </a>
                     <ul>
-                        <li><a href="https://www.seocho.go.kr/site/seocho/main.do" target="_blank">서초구청</a></li>
-                        <li><a href="https://seochowomen.kr/seocho/index.do" target="_blank">서초센터</a></li>
-                        <li><a href="https://www.bbcenter.or.kr/main/index.do" target="_blank">방배센터</a></li>
+                        <li><a href="https://www.seocho.go.kr/site/seocho/main.do" target="_blank">축제</a></li>
+                        <li><a href="https://seochowomen.kr/seocho/index.do" target="_blank">여행</a></li>
+                        <li><a href="https://www.bbcenter.or.kr/main/index.do" target="_blank">커뮤니티</a></li>
                     </ul>
                 </div>
             </div><!--content : end-->
-            <p>서울특별시 서초구 잠원로8길 38 서초여성가족플라자 잠원센터(지하철 3호선 잠원역 4번출구 100미터)</br>
-                대표전화: 02-522-0291</br>
+            <p>부산 부산진구 중앙대로 708 부산파이낸스센터 4층 </br>
+                대표전화: 010-9810-8268</br>
                 사업자등록번호 114-82-61807</br>
-                센터장 : 조영미</br>
+                팀명 : 2조(임채수,홍진태,오현제,문수연)</br>
                 </br>
                 Copyright ⓒ. All Rights Reserved.</p>
         </div>
     </footer><!-- footer : end-->
-    <div id="fix"><!--cart-fix : start-->
-        <ul>
-            <li class="cart">
-                <a href="#">
-                    <p>장바구니</p>
-                </a>
-            </li>
-            <li class="edu-box">
-                <div class="edu1">
-                    <a href="#">교육<br>수강신청</a>
-                </div>
-                <div class="edu2">
-                    <a href="#">온라인<br>클래스</a>
-                </div>
-                <div class="edu3">
-                    <a href="#">시간표<br>바로가기</a>
-                </div>
-                <div class="top-btn"><!--top-btn : start-->
-                    <a href="#header">TOP</a>
-                </div><!--top-btn : end-->
-            </li>
-        </ul>
-    </div><!-- cart-fix : end-->
+<!--    <div id="fix">&lt;!&ndash;cart-fix : start&ndash;&gt;-->
+<!--        <ul>-->
+<!--            <li class="cart">-->
+<!--                <a href="#">-->
+<!--                    <p>장바구니</p>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li class="edu-box">-->
+<!--                <div class="edu1">-->
+<!--                    <a href="#">교육<br>수강신청</a>-->
+<!--                </div>-->
+<!--                <div class="edu2">-->
+<!--                    <a href="#">온라인<br>클래스</a>-->
+<!--                </div>-->
+<!--                <div class="edu3">-->
+<!--                    <a href="#">시간표<br>바로가기</a>-->
+<!--                </div>-->
+<!--                <div class="top-btn">&lt;!&ndash;top-btn : start&ndash;&gt;-->
+<!--                    <a href="#header">TOP</a>-->
+<!--                </div>&lt;!&ndash;top-btn : end&ndash;&gt;-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>&lt;!&ndash; cart-fix : end&ndash;&gt;-->
 </div><!--wrap-->
 
 </body>

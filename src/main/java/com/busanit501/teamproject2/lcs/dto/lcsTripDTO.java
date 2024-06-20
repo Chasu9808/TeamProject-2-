@@ -13,9 +13,9 @@ public class lcsTripDTO {
     private Long trip_id;
     private String trip_name;
     private String trip_description;
-    private String trip_location;
-    private String trip_rating;
-    private String trip_category;
-    private boolean trip_recommended;
+    private String trip_lat;
+    private String trip_lng;
+    private String trip_address;
+    private String trip_day;
     private String trip_imageUrl;
 }

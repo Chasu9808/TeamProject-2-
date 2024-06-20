@@ -1,22 +1,30 @@
 package com.busanit501.teamproject2.lcs.controller;
 
-import com.busanit501.teamproject2.lcs.repository.lcsTripRepository;
+import com.busanit501.teamproject2.lcs.service.lcsTripService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
+@RequestMapping("/lcs")
 public class lcsTripController {
 
-    private final lcsTripRepository lcsTripRepository;
+    @Autowired
+    private lcsTripService tripService;
 
-    public lcsTripController(lcsTripRepository lcsTripRepository) {
-        this.lcsTripRepository = lcsTripRepository;
+    @GetMapping("/fetch-trips")
+    public String fetchTrips() {
+        tripService.fetchAndSaveTripData();
+        return "redirect:/lcs/list";
     }
 
-    @GetMapping("/lcs/trip")
+    @GetMapping("/trip")
     public String index(Model model) {
-        model.addAttribute("destinations", lcsTripRepository.findAll());
+        model.addAttribute("lcsTripList", tripService.getAllTrips());
         return "lcs/trip";
     }
 }

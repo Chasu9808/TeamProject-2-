@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -71,6 +72,10 @@
             </nav>
         </div><!-- bottom-wrap : end-->
     </header><!--header : end-->
+
+    <div layout:fragment="content">
+        <p> 컨텐트영역</p>
+    </div>
 
     <section id="last-info" class="inner"><!--last-info : start-->
         <div class="banner-box"><!--banner-box : start-->

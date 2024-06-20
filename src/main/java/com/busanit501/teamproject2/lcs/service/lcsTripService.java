@@ -22,7 +22,7 @@ public class lcsTripService {
         String apiKey = "CZCg%2BDiqxG98rGHOe6c4zVq8kDyfNCZhS%2FO98r%2BvIso25SDRurYTDLJIY3gZ5zvFToAmpB6kQPn5vbcsYTOwNg%3D%3D"; // 공공데이터 포털에서 발급받은 API 키
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "?serviceKey=" + apiKey;
+        String url = apiUrl + "?serviceKey=" + apiKey + "&format=json";
         String response = restTemplate.getForObject(url, String.class);
 
         ObjectMapper mapper = new ObjectMapper();
@@ -34,8 +34,11 @@ public class lcsTripService {
                 lcsTrip trip = lcsTrip.builder()
                         .trip_name(node.path("MAIN_TITLE").asText())
                         .trip_description(node.path("ITEMCNTNTS").asText())
-                        .trip_location(node.path("GUGUN_NM").asText())
-                        .trip_rating(node.path("rating").asText())
+                        .trip_lat(node.path("LAT").asText())
+                        .trip_lng(node.path("LNG").asText())
+                        .trip_address(node.path("ADDR1").asText())
+                        .trip_day(node.path("USAGE_DAY_WEEK_AND_TIME").asText())
+                        .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText())
                         .build();
                 trips.add(trip);
             }

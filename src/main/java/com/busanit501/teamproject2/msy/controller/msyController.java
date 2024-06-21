@@ -10,4 +10,10 @@ public class msyController {
     public String showIndexPage() {
         return "msy/list";
     }
+
+    @GetMapping("/msy/join")
+    public String join() {return "msy/join";}
+
+    @GetMapping("/msy/login")
+    public String login() {return "msy/login";}
 }

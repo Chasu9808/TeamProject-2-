@@ -1,0 +1,696 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <title>TripWithMe 페이지</title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper-min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/slick.css}" rel="stylesheet">
+    <script th:src="@{/js/html5.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script src="http://code.jquery.com/jquery-migrate-3.0.0.js"></script>
+    <script th:src="@{/js/slick.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+
+<body>
+<div id="wrap">
+
+    <header id="header"><!--header : start-->
+
+        <div class="header-line">
+            <div class="top-wrap inner"> <!--top=wrap : start-->
+                <div class="logo-box"><!--logo : start-->
+                    <a href="/lcs/list"><img src="/images/lcs_logo.png" alr="메인페이지 바로가기"></a>
+                </div><!--logo : end-->
+                <div class="util-box"><!--util-box : start-->
+                    <a href="/msy/login">로그인</a>
+                    <a href="/msy/join">회원가입</a>
+                    <a href="/lcs/list">사이트맵</a>
+                </div><!--util-box : end-->
+                <div class="mob-menu-warp">
+                    <a class="mob-cart">
+                        <img src="/images/lcs_travel.png" alt="여행지 바로가기">
+                    </a>
+                    <a class="mob_menu_open">
+                        <img src="/images/mob_menu.png" alt="메뉴열기">
+                    </a>
+
+                </div>
+            </div><!--top=wrap: end-->
+
+        </div>
+        <!--모바일네비 열기-->
+        <div class="layer_bg"></div>
+        <div id="mob_gnb">
+            <a class="mob_menu_close">
+                <img src="./images/close.png" alt="메뉴닫기">
+            </a>
+
+            <div class="mob_gnb_box">
+                <div class="mob_util_wrap">
+                    <div class="mob_util_box">
+                        <ul>
+                            <li><a href="/msy/login">로그인</a></li>
+                            <li><i class="far fa-user-circle"></i> <a href="/msy/join">회원가입</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="search_box">
+                        <form name="topfrm" id="topfrm" method="post">
+                            <input type="hidden" id="objTab" name="objTab" value="1">
+                            <input type="text" name="profileclass_nm" id="profileclass_nm" onkeypress="if(event.keyCode==13){top_search(); return false;}" placeholder="검색어를 입력하세요">
+                            <a onclick="top_search();"><img src="/images/new_search.png" alt="검색버튼"></a>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="mob_menu">
+                    <ul class="mob_menu_wrap">
+                        <li><a href="javascript:void(0);" class="tit">여행지</a>
+                            <ul class="sub_menu">
+                                <li><a href="https://www.women.co.kr/sub02/sub2_5.do">추천여행지</a></li>
+                                <li><a href="https://www.women.co.kr/sub02/sub2_7.do">랜덤여행지</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="sub_tit">수강신청안내</a>
+                                    <ol class="depth_menu bu">
+                                        <li><a href="https://www.women.co.kr/sub02/sub2_1.do">교육운영 및 신청방법</a></li>
+                                        <li><a href="https://www.women.co.kr/sub02/sub2_2.do">수강신청절차</a></li>
+                                        <li><a href="https://www.women.co.kr/sub02/sub2_3.do">결제방법</a></li>
+                                        <li><a href="https://www.women.co.kr/sub02/sub2_4.do">수강취소 및 환불</a></li>
+                                    </ol>
+                                </li>
+                                <li><a href="https://www.women.co.kr/sub02/sub2_6.do">사물함 신청</a></li>
+                                <!-- <li><a href="/sub02/sub2_8.do">가족사진 이벤트 신청</a></li> -->
+                            </ul>
+                        </li>
+
+                        <li><a href="javascript:void(0);" class="tit">사업소개</a>
+                            <ul class="sub_menu">
+                                <li><a href="https://www.women.co.kr/sub03/sub3_1.do">평생교육</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="sub_tit">경력키움사업</a>
+                                    <ol class="depth_menu bu">
+                                        <li><a href="https://www.women.co.kr/sub03/sub3_2.do">경력키움센터</a></li>
+                                        <li><a href="https://www.women.co.kr/sub04/sub4_2.do">키움강사단</a></li>
+                                        <li><a href="https://www.women.co.kr/sub04/sub4_3.do">키움강사단신청</a></li>
+                                        <li><a href="https://www.women.co.kr/sub04/sub4_4.do">교육프로그램신청</a></li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0);" class="sub_tit">심리상담및치료</a>
+                                    <ol class="depth_menu bu">
+                                        <li><a href="https://www.women.co.kr/sub05/sub5_2.do">서초심리상담센터(잠원)</a></li>
+                                        <li><a href="https://www.women.co.kr/sub05/sub5_3.do">서초심리상담센터(내곡)</a></li>
+                                        <li><a href="https://www.women.co.kr/sub05/sub5_4.do">상담사·치료사 소개</a></li>
+                                    </ol>
+                                </li>
+                                <li><a href="https://www.women.co.kr/sub05/sub5_1.do">이혼가정면접교섭</a></li>
+                                <li><a href="https://www.women.co.kr/sub03/sub3_4.do">양성평등활동사업</a></li>
+                                <!-- <li><a href="/sub03/sub3_5.do">늘봄카페</a></li> -->
+                                <li><a href="https://www.women.co.kr/sub03/sub3_3.do">외부공모사업</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="javascript:void(0);" class="tit">커뮤니티</a>
+                            <ul class="sub_menu">
+                                <li><a href="https://www.women.co.kr/sub06/sub6_1.do">공지사항</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_2.do">교육안내</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_8.do">e-book</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_3.do">언론보도·보도자료</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_4.do">사진·영상자료</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_5.do">교육제안·강사지원</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_6.do">자주묻는질문</a></li>
+                                <li><a href="https://www.women.co.kr/sub06/sub6_7.do">1대1 질문</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="javascript:void(0);" class="tit">기관소개 </a>
+                            <ul class="sub_menu">
+                                <li><a href="https://www.women.co.kr/sub01/sub1_1.do">인사말</a></li>
+                                <li><a href="https://www.women.co.kr/sub01/sub1_2.do">법인소개</a></li>
+                                <li><a href="https://www.women.co.kr/sub01/sub1_3.do">미션비전</a></li>
+                                <li><a href="https://www.women.co.kr/sub01/sub1_4.do">연혁</a></li>
+                                <li><a href="https://www.women.co.kr/sub01/sub1_5.do">조직도</a></li>
+                                <li>
+                                    <a href="javascript:void(0);" class="sub_tit">시설안내</a>
+                                    <ol class="depth_menu bu">
+                                        <li><a href="https://www.women.co.kr/sub01/sub1_6.do">잠원센터</a></li>
+                                        <!-- li><a href="/sub01/sub1_6_2.do">방배센터</a></li -->
+                                        <li><a href="https://www.women.co.kr/sub01/sub1_6_4.do">서초심리상담센터(내곡)</a></li>
+                                        <!-- <li><a href="/sub01/sub1_6_5.do">늘봄카페</a></li> -->
+                                    </ol>
+                                </li>
+                                <li><a href="https://www.women.co.kr/sub01/sub1_7.do">찾아오시는 길</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="javascript:void(0);" class="tit">마이페이지 </a>
+                            <ul class="sub_menu">
+                                <li><a href="https://www.women.co.kr/mypage/lecture_history.do">수강신청내역</a></li>
+                                <li><a href="https://www.women.co.kr/mypage/memberinfo.do">개인정보관리</a></li>
+                                <li><a href="https://www.women.co.kr/mypage/childmember.do">자녀 계정관리</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div><!-- //mob_menu -->
+            </div> <!--  mob_gnb_box -->
+        </div><!-- //mob_gnb -->
+        <!--모바일네비 닫기-->
+        <div id="bottom-wrap" class="inner"><!-- bottom-wrap : start-->
+            <nav>
+                <ul class="nav-box"><!-- nav-box : start-->
+                    <li class="nav-btn"> <!--nav-btn : start-->
+                        <a href="/lcs/trip">여행지</a>
+                        <ul class="nav-list"><!--nav-list : start-->
+                            <li><a href="/lcs/trip_best">추천 여행지</a></li>
+                            <li><a href="/lcs/trip_random">랜덤 여행지</a></li>
+                        </ul><!--nav-list : end-->
+                    </li><!--nav-btn : end-->
+                    <li class="nav-btn"> <!--nav-btn : start-->
+                        <a href="/ohj/festival">축제</a>
+                        <ul class="nav-list"><!--nav-list : start-->
+                            <li><a href="#">축제 리스트</a></li>
+                        </ul><!--nav-list : end-->
+                    </li><!--nav-btn : end-->
+                    <li class="nav-btn"> <!--nav-btn : start-->
+                        <a href="/lcs/trip_select">맞춤 여행지</a>
+                        <ul class="nav-list"><!--nav-list : start-->
+                            <li><a href="#">맞춤 여행지</a></li>
+                        </ul><!--nav-list : end-->
+                    </li><!--nav-btn : end-->
+                    <li class="nav-btn"> <!--nav-btn : start-->
+                        <a href="/hjt/comunity">커뮤니티</a>
+                        <ul class="nav-list"><!--nav-list : start-->
+                            <li><a href="hjt/realchat">트립톡</a></li>
+                            <li><a href="hjt/board">여행 게시판</a></li>
+                        </ul><!--nav-list : end-->
+                    </li><!--nav-btn : end-->
+                </ul><!-- nav-box : end-->
+            </nav>
+        </div><!-- bottom-wrap : end-->
+    </header><!--header : end-->
+
+
+
+<!--content : start-->
+
+
+    <style>
+        .register {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 140vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #19a6ef;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .form-group button:hover {
+            background-color: blue;
+        }
+        .form-group .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .form-group .checkbox-container input {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-group .checkbox-container label {
+            margin: 0;
+        }
+        .form-group1 .terms-link {
+            margin-left: auto;
+            color: #007BFF;
+            cursor: pointer;
+
+        }
+
+
+        .form-group1 {
+            margin-bottom: 15px;
+            display: flex;justify-content: space-between
+        }
+        .form-group1 label {
+            margin-bottom: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #marketingOptions{
+            padding-left: 20px;
+        }
+    </style>
+    </head>
+    <section class="register">
+        <div class="signup-container">
+            <h2 style="text-align: center">회원가입</h2>
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <label for="id">아이디:</label>
+                    <input type="text" id="id" name="id" placeholder="아이디를 입력해 주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호:</label>
+                    <input type="password" id="password" name="password" placeholder="비밀번호를 입력해 주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">비밀번호 확인:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호를 다시 입력해 주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">생년월일:</label>
+                    <input type="date" id="birthday" name="birthday" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요." required>
+                </div>
+                <div class="form-group">
+                    <label for="phone_number">전화번호:</label>
+                    <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]*" placeholder="전화번호를 하이픈(-) 없이 입력하세요." required>
+                </div>
+
+
+                <div style="padding-top: 30px;"></div>
+
+                <style>
+
+                    .dotted-text {
+                        border-bottom: 1px dotted gray;
+                    }
+
+                    .thick-line {
+                        border-bottom: 2px solid black;
+                    }
+                </style>
+
+                <b>이용약관</b>
+                 <div style="padding-bottom: 6px;"></div>
+                <p class="thick-line"></p>
+
+
+
+                <div class="checkbox-container" style="padding: 10px 0;">
+                    <input type="checkbox" id="all-terms" name="all-terms">
+                    <label for="all-terms" style="font-weight: bold;">전체 동의</label>
+                </div>
+
+                <p class="dotted-text"></p>
+
+                <div style="padding: 10px 0;">
+                    <div class="form-group1 checkbox-container">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms">[필수] 이용약관</label>
+                        <span class="terms-link" onclick="openModal('termsModal')">약관보기</span>
+                    </div>
+                    <div class="form-group1 checkbox-container">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">[필수] 개인정보 처리방침</label>
+                        <span class="terms-link" onclick="openModal('privacyModal')">약관보기</span>
+                    </div>
+                    <div class="form-group1 checkbox-container">
+                        <input type="checkbox" id="data-collection" name="data-collection" required>
+                        <label for="data-collection">[필수] 개인정보 수집 및 이용 동의(회원가입시)</label>
+                        <span class="terms-link" onclick="openModal('dataCollectionModal')">약관보기</span>
+                    </div>
+                    <div class="form-group1 checkbox-container">
+                        <input type="checkbox" id="marketing" name="marketing">
+                        <label for="marketing">[선택] 마케팅 활용 동의 및 광고 수신 동의</label>
+                        <span class="terms-link" onclick="openModal('marketingModal')">약관보기</span>
+                    </div>
+                </div>
+
+                <p class="dotted-text"></p>
+
+                <div style="padding: 30px 0;text-align: center;">
+                    <b>이미 회원이신가요?</b> <a href="/msy/login" style="color: black;text-decoration: none;">로그인</a>
+                </div>
+                <div class="form-group">
+                    <button type="submit">가입하기</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- The Modal -->
+        <div id="termsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('termsModal')">&times;</span>
+                <h2>이용약관</h2>
+                <br>
+                <p class="dotted-text"></p>
+                <br>
+                <p>제1조 목적
+                    <br><br>
+
+                    본 약관은 회원(이하 "회원"이라 함)이 [서비스 제공자의 상호 및 대표자명, 주소, 전화번호, 이메일 등을 기재]가 제공하는 [서비스명 또는 웹사이트명] 서비스(이하 "서비스"라 함)를 이용함에 있어 필요한 회원과 서비스 제공자 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.
+                    <br><br>
+
+                    제2조 정의
+                    <br><br>
+
+                    "서비스"라 함은 회원이 [서비스 제공자의 서비스 명칭] 웹사이트를 통해 이용할 수 있는 [서비스 설명, 예를 들어 게시글 작성, 댓글 작성, 커뮤니티 기능 등] 및 관련 서비스를 의미합니다.
+                    <br><br>
+                    "회원"이라 함은 본 약관에 동의하고 [서비스 제공자]와 회원가입을 완료한 자를 의미합니다.
+                    <br><br>
+                    제3조 약관의 효력 및 변경
+                    <br><br>
+                    본 약관은 회원이 동의함으로써 효력이 발생합니다.
+                    <br><br>
+                    서비스 제공자는 본 약관을 원활한 서비스 운영 및 회원의 권익 보호를 위해 필요한 경우 변경할 수 있으며, 변경된 약관은 서비스 내 공지사항 등을 통해 공지하고 적용일자 7일 전부터 효력이 발생합니다.
+                    <br><br>
+                    제4조 회원의 의무
+                    <br><br>
+                    회원은 본 서비스를 이용함에 있어 관계 법령, 본 약관의 규정, 서비스 제공자가 공지하는 주의사항 및 규정 등을 준수하여야 합니다.
+                    <br><br>
+                    회원은 본인의 개인정보 관리 및 보호에 대한 책임을 부담합니다.
+                    <br><br>
+                    제5조 서비스 제공자의 의무
+                    <br><br>
+                    서비스 제공자는 회원에게 안정적이고 지속적인 서비스 제공을 위해 최선을 다하며, 관련 법령과 본 약관이 금지하는 행위를 하지 않습니다.
+                    <br><br>
+                    서비스 제공자는 회원이 안전하게 서비스를 이용할 수 있도록 개인정보 보호를 위해 노력합니다.
+                    <br><br>
+                    제6조 계약 해지 및 이용 제한
+                    <br><br>
+                    회원이 이용 계약을 해지하고자 할 경우, 서비스 제공자가 정한 절차에 따라 해지를 요청하여야 합니다.
+                    <br><br>
+                    서비스 제공자는 회원이 본 약관을 위반하거나 서비스 운영을 방해하는 경우 이용을 제한하거나 계약을 해지할 수 있습니다.
+                    <br><br>
+                    제7조 책임 제한
+                    <br><br>
+                    서비스 제공자는 천재지변 또는 이에 준하는 불가항력으로 인해 서비스를 제공할 수 없는 경우에는 책임이 면제됩니다.
+                    <br><br>
+                    제8조 재판권 및 준거법
+                    <br><br>
+                    본 약관에 정하지 않은 사항이나 회원과 서비스 제공자 간의 분쟁에 대해서는 대한민국 법을 준거법으로 하며, 관할 법원은 [서비스 제공자 소재지의 관할법원]으로 합니다.</p>
+            </div>
+        </div>
+
+        <div id="privacyModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+                <h2>개인정보 처리방침</h2>
+                <br>
+                <p class="dotted-text"></p>
+                <br>
+                <p>[서비스명] 개인정보 처리방침
+                    <br><br>
+                    [서비스명] (이하 "회사"라 함)은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다. 회사는 개인정보 처리방침을 통하여 이용자가 제공하는 개인정보가 어떠한 용도와 방식으로 이용되고 있으며, 개인정보 보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
+                    <br><br>
+                    제1조 수집하는 개인정보의 항목
+                    <br><br>
+                    회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.
+                    <br><br>
+                    수집 항목: 이름, 생년월일, 성별, 로그인 ID, 비밀번호, 전화번호, 이메일, 주소, 결제 정보
+                    서비스 이용 과정에서 IP 주소, 쿠키, 방문 일시, 서비스 이용 기록, 불량 이용 기록 등의 정보가 자동으로 생성되어 수집될 수 있습니다.
+                    제2조 개인정보의 수집 및 이용 목적
+                    <br><br>
+                    회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+                    <br><br>
+                    서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
+                    회원 관리: 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량 회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 연령 확인, 불만 처리 등
+                    마케팅 및 광고: 이벤트 등 광고성 정보 전달, 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+                    제3조 개인정보의 보유 및 이용 기간
+                    <br><br>
+                    회사는 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+                    <br><br>
+                    보존 항목: 이름, 생년월일, 성별, 로그인 ID, 비밀번호, 전화번호, 이메일, 주소, 결제 정보
+                    보존 근거: 회원탈퇴 후 불량 이용자의 재가입 방지 및 분쟁 해결을 위한 보존
+                    보존 기간: 회원탈퇴 후 1년
+                    제4조 개인정보의 파기 절차 및 방법
+                    <br><br>
+                    회사는 원칙적으로 개인정보 처리 목적이 달성된 경우에는 지체 없이 해당 개인정보를 파기합니다. 파기 절차 및 방법은 다음과 같습니다.
+                    <br><br>
+                    파기 절차: 회원이 회원가입 등을 위해 입력한 정보는 목적 달성 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라 일정 기간 저장된 후 파기됩니다.
+                    파기 방법: 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제하며, 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다.
+                    제5조 개인정보의 제3자 제공
+                    <br><br>
+                    회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다.
+                    <br><br>
+                    이용자가 사전에 동의한 경우
+                    법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우
+                    제6조 이용자의 권리와 그 행사 방법
+                    <br><br>
+                    이용자는 언제든지 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며, 가입 해지를 요청할 수도 있습니다.
+                    <br><br>
+                    개인정보 조회, 수정 및 가입 해지를 위해서는 '개인정보 변경' (또는 '회원정보 수정' 등)을 클릭하여 본인 확인 절차를 거치신 후 직접 열람, 정정 또는 탈퇴가 가능합니다.
+                    개인정보 보호책임자에게 서면, 전화 또는 이메일로 연락하시면 지체 없이 조치하겠습니다.
+                    제7조 개인정보의 안전성 확보 조치
+                    <br><br>
+                    회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.
+                    <br><br>
+                    관리적 조치: 내부관리계획 수립, 시행, 정기적 직원 교육
+                    기술적 조치: 개인정보처리시스템 등의 접근권한 관리, 접근통제시스템 설치, 고유식별정보 등의 암호화
+                    물리적 조치: 전산실, 자료보관실 등의 접근통제
+                    제8조 개인정보 보호책임자 및 담당자의 연락처
+                    <br><br>
+                    회사는 이용자의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+                    <br><br>
+                    개인정보 보호책임자: [이름]
+                    연락처: [전화번호], [이메일]
+                    제9조 고지의 의무
+                    <br><br>
+                    현 개인정보 처리방침의 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일 전부터 서비스 내 공지사항을 통하여 고지할 것입니다. 다만, 이용자의 권리 또는 의무에 중요한 변경이 있을 경우에는 최소 30일 전에 고지합니다.
+                    <br><br>
+                    공고일자: [공고일]
+                    시행일자: [시행일]</p>
+            </div>
+        </div>
+
+        <div id="dataCollectionModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('dataCollectionModal')">&times;</span>
+                <h2>개인정보 수집 및 이용 동의</h2>
+                <br>
+                <p class="dotted-text"></p>
+                <br>
+                <p>[서비스명] 개인정보 수집 및 이용 동의서
+                    <br><br>
+                    [서비스명] (이하 "회사"라 함)은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다. 회사는 아래와 같이 이용자의 개인정보를 수집 및 이용하고자 하오니, 동의해 주시기 바랍니다.
+                    <br><br>
+                    1. 수집하는 개인정보 항목
+                    <br><br>
+                    회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.
+                    <br><br>
+                    필수항목: 이름, 생년월일, 성별, 로그인 ID, 비밀번호, 전화번호, 이메일, 주소
+                    선택항목: [선택항목 기재, 예: 취미, 관심사 등]
+                    자동수집항목: 서비스 이용기록, 접속 로그, 쿠키, 접속 IP 정보
+                    <br><br>
+                    2. 개인정보의 수집 및 이용 목적
+                    <br><br>
+                    회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+                    <br><br>
+                    서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
+                    회원 관리: 회원제 서비스 이용에 따른 본인확인, 개인 식별, 불량 회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 연령 확인, 불만 처리 등
+                    마케팅 및 광고: 이벤트 등 광고성 정보 전달, 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계
+                    <br><br>
+                    3. 개인정보의 보유 및 이용 기간
+                    <br><br>
+                    회사는 원칙적으로 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 다만, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+                    <br><br>
+                    보존 항목: 이름, 생년월일, 성별, 로그인 ID, 비밀번호, 전화번호, 이메일, 주소
+                    보존 근거: 회원탈퇴 후 불량 이용자의 재가입 방지 및 분쟁 해결을 위한 보존
+                    보존 기간: 회원탈퇴 후 1년
+                    <br><br>
+                    4. 개인정보의 파기 절차 및 방법
+                    <br><br>
+                    회사는 원칙적으로 개인정보 처리 목적이 달성된 경우에는 지체 없이 해당 개인정보를 파기합니다. 파기 절차 및 방법은 다음과 같습니다.
+                    <br><br>
+                    파기 절차: 회원이 회원가입 등을 위해 입력한 정보는 목적 달성 후 별도의 DB로 옮겨져 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라 일정 기간 저장된 후 파기됩니다.
+                    파기 방법: 전자적 파일 형태의 정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제하며, 종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기합니다.
+                    <br><br>
+                    5. 개인정보 제공 동의 거부 권리 및 불이익 사항
+                    <br><br>
+                    이용자는 개인정보 제공 동의를 거부할 권리가 있습니다. 단, 필수항목에 대한 동의를 거부할 경우 서비스 제공에 제한이 있을 수 있습니다.</p>
+            </div>
+        </div>
+
+        <div id="marketingModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('marketingModal')">&times;</span>
+                <h2>마케팅 활용 동의 및 광고 수신 동의</h2>
+                <br>
+                <p class="dotted-text"></p>
+                <br>
+                <p>
+                    [서비스명] 마케팅 활용 동의 및 광고 수신 동의서
+                    <br><br>
+                    [서비스명] (이하 "회사"라 함)은 이용자의 개인정보를 중요시하며, "개인정보 보호법" 등 관련 법령을 준수하고 있습니다. 회사는 아래와 같이 이용자의 개인정보를 마케팅 목적으로 활용하고 광고를 수신하고자 하오니, 동의해 주시기 바랍니다.
+                    <br><br>
+                    1. 수집하는 개인정보 항목
+                    <br><br>
+                    회사는 마케팅 활용 및 광고 수신을 위해 아래와 같은 개인정보를 수집합니다.
+                    <br><br>
+                    필수항목: 이름, 전화번호, 이메일 주소
+                    선택항목: 생년월일, 성별, 주소, 관심사
+                    <br><br>
+                    2. 개인정보의 수집 및 이용 목적
+                    <br><br>
+                    회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+                    <br><br>
+                    맞춤형 서비스 제공 및 마케팅 자료 활용
+                    이벤트 및 광고성 정보 제공
+                    신제품 또는 서비스 안내
+                    고객 맞춤형 광고 및 프로모션
+                    <br><br>
+                    3. 개인정보의 보유 및 이용 기간
+                    <br><br>
+                    회사는 개인정보 수집 및 이용 목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 다만, 관련 법령에 의하여 보존할 필요가 있는 경우에는 일정 기간 동안 보존합니다.
+                    <br><br>
+                    보존 항목: 이름, 전화번호, 이메일 주소, 생년월일, 성별, 주소, 관심사
+                    보존 기간: 회원탈퇴 후 1년
+                    <br><br>
+                    4. 개인정보 제공 동의 거부 권리 및 불이익 사항
+                    <br><br>
+                    이용자는 개인정보 제공 동의를 거부할 권리가 있으며, 거부 시 마케팅 정보 및 광고 수신에 제한이 있을 수 있습니다.
+                    <br><br>
+                    5. 광고 수신 동의
+                    <br><br>
+                    회사는 이메일, SMS, MMS, 전화, 푸시 알림 등 다양한 방법을 통해 회원에게 유용한 정보를 제공하고자 합니다. 이에 동의하시면 관련 정보를 받아보실 수 있습니다.</p>
+            </div>
+        </div>
+
+        <script>
+            function openModal(modalId) {
+                document.getElementById(modalId).style.display = "block";
+            }
+
+            function closeModal(modalId) {
+                document.getElementById(modalId).style.display = "none";
+            }
+
+            document.getElementById('all-terms').addEventListener('change', function() {
+                var checkboxes = document.querySelectorAll('.form-group1 input[type="checkbox"]');
+                for (var checkbox of checkboxes) {
+                    checkbox.checked = this.checked;
+                }
+            });
+
+        </script>
+    </section>
+
+
+
+    <!--content : end-->
+
+
+
+    <footer id="footer-wrap"> <!-- footer : start-->
+        <div class="inner">
+            <div class="logo-sns"><!--logo-sns :start-->
+                <img src="/images/lcs_footer_logo.png" alt="로고이미지">
+                <div class="sns"><!--sns : start-->
+                    <a href="https://blog.naver.com/seochowomen" target="_blank"><img src="/images/footer-naver.png" alt="네이버 sns 바로가기"></a>
+                    <a href="https://www.facebook.com/seochowomen2016" target="_blank"><img src="/images/footer-facebook.png" alt="페이스북 sns 바로가기"></a>
+                    <a href="https://www.youtube.com/channel/UC5L6G0Eh04X-wl1eJCjU_rg" target="_blank"><img src="/images/footer-youtube.png" alt="유튜브 바로가기"></a>
+                    <a href="https://www.instagram.com/seochowomen/" target="_blank"><img src="/images/footer-insta.png" alt="인스타 sns 바로가기"></a>
+                    <a href="https://pf.kakao.com/_ZeJMC" target="_blank"><img src="/images/footer-kakao.png" alt="카카오톡 바로가기"></a>
+
+                </div><!-- sns : end-->
+            </div><!-- logo-sns : end-->
+            <div class="content"><!--content : start-->
+                <div>
+                    <a href="#">개인정보 취급방침</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">사이트맵</a>
+                    <a href="#">오시는길</a>
+                </div>
+                <div class="family">
+                    <a href="#" class="click" onclick="return false">
+                        퀵 리스트<i class="icon" role="img"></i>
+                    </a>
+                    <ul>
+                        <li><a href="https://www.seocho.go.kr/site/seocho/main.do" target="_blank">축제</a></li>
+                        <li><a href="https://seochowomen.kr/seocho/index.do" target="_blank">여행</a></li>
+                        <li><a href="https://www.bbcenter.or.kr/main/index.do" target="_blank">커뮤니티</a></li>
+                    </ul>
+                </div>
+            </div><!--content : end-->
+            <p>부산 부산진구 중앙대로 708 부산파이낸스센터 4층 </br>
+                대표전화: 010-9810-8268</br>
+                사업자등록번호 114-82-61807</br>
+                팀명 : 2조(임채수,홍진태,오현제,문수연)</br>
+                </br>
+                Copyright ⓒ. All Rights Reserved.</p>
+        </div>
+    </footer><!-- footer : end-->

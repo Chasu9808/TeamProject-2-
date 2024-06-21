@@ -52,7 +52,7 @@ submenu.click(function(){
   $(this).next('.depth_menu').slideToggle('on');
 })
    //추천교육
-   $("#main-education .regular").slick({
+   $("#main-triptitle .regular").slick({
 	arrows : true, 
 	infinite: true,
 	slidesToShow:4,
@@ -84,11 +84,11 @@ var sw = 0;
 	$('.btn_pause').click(function(){
 	if(sw==0){
 		$('.btn_pause').addClass('on');
-		$('#main-education .regular').slick('slickPause')
+		$('#main-triptitle .regular').slick('slickPause')
 		sw = 1;
 	}else{
 		$('.btn_pause').removeClass('on');
-		$('#main-education .regular').slick('slickPlay')
+		$('#main-triptitle .regular').slick('slickPlay')
 		sw = 0;
 		}
 	});

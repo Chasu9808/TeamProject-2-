@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="www.thymeleaf.org"
-      layout:decorate="~{layout/base.html}"
->
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -25,27 +24,25 @@
 
 <body>
 <div layout:fragment="content">
-<div id="wrap">
-
-    <div class="container">
-        <h1 class="my-4">여행리스트</h1>
-        <div th:each="destination : ${destinations}" class="destination">
-            <div class="image-container">
-                <img th:src="@{${destination.trip_imageUrl}}" th:alt="${destination.trip_name}" class="img-fluid">
+    <div id="wrap">
+        <div class="container">
+            <h1 class="my-4">여행리스트</h1>
+            <div th:each="trip : ${lcsTripList}" class="lcsTripList">
+                <div class="image-container">
+                    <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
+                </div>
+                <div class="info-container">
+                    <h2 th:text="${trip.trip_name}"></h2>
+                    <p th:text="${trip.trip_description}"></p>
+                    <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
+                    <p><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
+                        <span th:text="${trip.trip_lng}"></span></p>
+                    <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
+                </div>
+                <div style="clear: both;"></div>
             </div>
-            <div class="info-container">
-                <h2 th:text="${destination.trip_name}"></h2>
-                <p th:text="${destination.trip_description}"></p>
-                <p><strong>Location:</strong> <span th:text="${destination.trip_location}"></span></p>
-                <p><strong>Rating:</strong> <span th:text="${destination.trip_rating}"></span></p>
-                <p><strong>Category:</strong> <span th:text="${destination.trip_category}"></span></p>
-                <p><strong>Recommended:</strong> <span th:text="${destination.trip_recommended ? 'Yes' : 'No'}"></span></p>
-            </div>
-            <div style="clear: both;"></div>
         </div>
-    </div>
-        </div><!--sns-right: end-->
+    </div><!--sns-right: end-->
 </div><!--wrap-->
 </body>
-
 </html>

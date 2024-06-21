@@ -6,8 +6,7 @@ $("#main-slide .lazy").slick({
 	infinite: true,
 	// autoplay : true,			// 자동 스크롤 사용 여부
 	autoplaySpeed : 10000, 		// 자동 스크롤 시 다음으로 넘어가는데 걸리는 시간 (ms)
-
-
+	
   });
  
   //서비스바로가기 롤오버

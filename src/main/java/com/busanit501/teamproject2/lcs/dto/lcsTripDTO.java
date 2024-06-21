@@ -18,7 +18,6 @@ public class lcsTripDTO {
     private String trip_lat;
     private String trip_lng;
     private String trip_address;
-//    private String trip_day;
-    private LocalDateTime trip_day;
+    private String trip_day;
     private String trip_imageUrl;
 }

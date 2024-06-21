@@ -40,7 +40,7 @@ public class lcsTrip extends BaseEntity{
     // 여행지 지역
 
     @Column(nullable = false)
-    private LocalDateTime trip_day;
+    private String trip_day;
     // 여행지 운영날짜
 
     @Column(nullable = false)

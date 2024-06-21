@@ -2864,5 +2864,17 @@ nav .nav-box .nav-btn:hover>a::after {
     float: left;
     width: calc(100% - 240px); /* Total width - image width and margin */
   }
+
+  div.container .lcsTripList .info-container p {
+    max-height: 4.8em;
+    margin: 0;
+    line-height: 1.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+
+
 }
 

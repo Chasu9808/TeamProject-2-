@@ -50,7 +50,8 @@ public class lcsTripService {
                         .trip_lat(node.path("LAT").asText(null))
                         .trip_lng(node.path("LNG").asText(null))
                         .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText(null))
-                        .trip_day(LocalDateTime.now())
+                        .trip_day(node.path("USAGE_DAY_WEEK_AND_TIME").asText(null))
+
                         .build();
                 trips.add(trip);
             }

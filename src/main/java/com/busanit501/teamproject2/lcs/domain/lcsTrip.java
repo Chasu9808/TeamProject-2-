@@ -22,7 +22,8 @@ public class lcsTrip extends BaseEntity{
     private String trip_name;
     // 여행지 명칭
 
-    @Column(nullable = false)
+    @Lob // MEDIUMTEXT에 해당하는 @Lob 어노테이션 추가
+    @Column(nullable = false, columnDefinition = "MEDIUMTEXT")
     private String trip_description;
     // 여행지 설명
 
@@ -39,7 +40,6 @@ public class lcsTrip extends BaseEntity{
     // 여행지 지역
 
     @Column(nullable = false)
-//    private String trip_day;
     private LocalDateTime trip_day;
     // 여행지 운영날짜
 

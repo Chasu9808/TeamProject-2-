@@ -1,19 +1,18 @@
 package com.busanit501.teamproject2.lcs.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "lcstrip")
-@Data
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class lcsTrip extends BaseEntity{
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long trip_id;
@@ -34,12 +33,14 @@ public class lcsTrip extends BaseEntity{
     @Column(nullable = false)
     private String trip_lng;
     // 여행지 경도
+
     @Column(nullable = false)
     private String trip_address;
     // 여행지 지역
 
     @Column(nullable = false)
-    private String trip_day;
+//    private String trip_day;
+    private LocalDateTime trip_day;
     // 여행지 운영날짜
 
     @Column(nullable = false)

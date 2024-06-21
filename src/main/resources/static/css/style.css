@@ -2815,21 +2815,6 @@ nav .nav-box .nav-btn:hover>a::after {
     max-width: 600px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media all and (max-width:400px) {
   #center-banner .center a {
     padding: 7px 18px;
@@ -2852,4 +2837,32 @@ nav .nav-box .nav-btn:hover>a::after {
     width: 100%;
 }
 
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .destination {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .image-container {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 5px;
+    margin-right: 20px;
+    float: left;
+  }
+
+  .info-container {
+    float: left;
+    width: calc(100% - 240px); /* Total width - image width and margin */
+  }
 }
+

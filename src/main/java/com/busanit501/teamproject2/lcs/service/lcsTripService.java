@@ -1,17 +1,17 @@
 package com.busanit501.teamproject2.lcs.service;
 
 import com.busanit501.teamproject2.lcs.domain.lcsTrip;
-import com.busanit501.teamproject2.lcs.dto.lcsTripDTO;
 import com.busanit501.teamproject2.lcs.repository.lcsTripRepository;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class lcsTripService {
@@ -20,26 +20,37 @@ public class lcsTripService {
     private lcsTripRepository repository;
 
     public void fetchAndSaveTripData() {
-        String apiUrl = "http://apis.data.go.kr/6260000/AttractionService"; // 공공데이터 포털 API URL
-        String apiKey = "CZCg+DiqxG98rGHOe6c4zVq8kDyfNCZhS/O98r+vIso25SDRurYTDLJIY3gZ5zvFToAmpB6kQPn5vbcsYTOwNg=="; // 공공데이터 포털에서 발급받은 API 키
+        String apiUrl = "https://apis.data.go.kr/6260000/AttractionService/getAttractionKr";
+        String apiKey = "ViNhf9KFHrhlepP82G2riFCwzySQxL4juLIE5itFGrf8lpCixgdypSpsC930g7033hqAO8PKM99K5eNbt13uSA==";
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "?serviceKey=" + apiKey;
-        String response = restTemplate.getForObject(url, String.class);
+        String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=20";
 
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root;
         try {
-            root = mapper.readTree(response);
+            ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
+            String response = responseEntity.getBody();
+
+            XmlMapper mapper = new XmlMapper();
+            JsonNode root = mapper.readTree(response);
+
+            JsonNode itemsNode = root.path("body").path("items").path("item");
+
+            // 변환된 json 구조
+            System.out.println("JSON 구조: " + root);
+
+            // itemsNode 출력
+            System.out.println("itemsNode: " + itemsNode);
+
             List<lcsTrip> trips = new ArrayList<>();
-            for (JsonNode node : root.path("items")) {
+            for (JsonNode node : itemsNode) {
                 lcsTrip trip = lcsTrip.builder()
-                        .trip_name(node.path("name").asText())
-                        .trip_description(node.path("description").asText())
-                        .trip_location(node.path("location").asText())
-                        .trip_rating(node.path("rating").asText())
-                        .trip_category(node.path("category").asText())
-                        .trip_recommended(node.path("recommended").asBoolean())
+                        .trip_name(node.path("MAIN_TITLE").asText(null))
+                        .trip_description(node.path("ITEMCNTNTS").asText(null))
+                        .trip_address(node.path("ADDR1").asText(null))
+                        .trip_lat(node.path("LAT").asText(null))
+                        .trip_lng(node.path("LNG").asText(null))
+                        .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText(null))
+                        .trip_day(LocalDateTime.now())
                         .build();
                 trips.add(trip);
             }
@@ -48,7 +59,6 @@ public class lcsTripService {
             e.printStackTrace();
         }
     }
-
 
     public List<lcsTrip> getAllTrips() {
         return repository.findAll();

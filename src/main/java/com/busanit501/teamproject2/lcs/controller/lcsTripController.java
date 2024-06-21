@@ -1,6 +1,5 @@
 package com.busanit501.teamproject2.lcs.controller;
 
-import com.busanit501.teamproject2.lcs.dto.lcsTripDTO;
 import com.busanit501.teamproject2.lcs.service.lcsTripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +15,11 @@ public class lcsTripController {
 
     @Autowired
     private lcsTripService tripService;
+
     @GetMapping("/fetch-trips")
     public String fetchTrips() {
         tripService.fetchAndSaveTripData();
-        return "fetch-trips-success";
+        return "redirect:/lcs/list";
     }
 
     @GetMapping("/trip")

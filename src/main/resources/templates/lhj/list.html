@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <title>TripWithMe 페이지</title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper-min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/slick.css}" rel="stylesheet">
+    <script th:src="@{/js/html5.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/js/slick.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <section id="main-slide" class="inner"><!--main-slide : start-->
+        <div class="lazy slider" data-sizes="50vw">
+            <div>
+                <a href="#"><img src="/images/lcs_busan1.jpeg" data-sizes="100vw"></a>
+            </div>
+            <div>
+                <a href="#"><img src="/images/lcs_busan2.jpeg" data-sizes="100vw"></a>
+            </div>
+            <div>
+                <a href="#"><img src="/images/lcs_busan3.jpeg" data-sizes="100vw"></a>
+            </div>
+            <div>
+                <a href="#"><img src="/images/lcs_busan4.jpeg" data-sizes="100vw"></a>
+            </div>
+        </div>
+    </section><!--main-slide : end -->
+    <section id="Quick" class="inner"><!-- Quick : start-->
+        <div class="Quick-title"><!--Quick-title : start-->
+            <h2>원하는 서비스를<br><span>빠르게 찾아보세요</span></h2>
+            <div class="search-bar"><!--search-bar : start-->
+                <form>
+                    <input type="text" placeholder="무엇을 찾으시나요?">
+                    <a onclick="top_search();"><img src="/images/search-icon.png" alt="검색버튼"></a>
+                </form>
+            </div><!--search-bar : end-->
+        </div><!--Quick-title : end-->
+        <ul class="Quick-menu"><!--Quick-menu : start-->
+            <li><a href="#"><img src="/images/lcs_tripicon.png"></a>
+                <ul>
+                    <li>추천 여행지</li>
+                </ul>
+            <li><a href="#"><img src="/images/lcs_seaicon.png"></a>
+                <ul>
+                    <li>바다<br>여행지</li>
+                </ul>
+            <li><a href="#"><img src="/images/lcs_festivalicon.png"></a>
+                <ul>
+                    <li>축제</li>
+                </ul>
+            <li><a href="#"><img src="/images/lcs_comunityicon.png"></a>
+                <ul>
+                    <li>커뮤니티</li>
+                </ul>
+            <li><a href="#"><img src="/images/lcs_q&aicon.png"></a>
+                <ul>
+                    <li>1:1문의</li>
+                </ul>
+            </li>
+
+        </ul><!--Quick-menu : end-->
+
+    </section><!--Quick : end-->
+    <section id="main-education" class="inner"><!-- main-education : start-->
+        <div class="edu-title"><!--edu-title : start-->
+            <h2><span>추천여행</span>을<br>확인해보세요!</h2>
+            <button type="button" class="btn_pause">
+                play
+            </button>
+        </div><!--edu-title :end-->
+        <div class="regular slider"> <!--regular : start-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best1.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>초량 이바구길 168계단
+                            <br>특별한 이야기 길을 통하여 새로운 부산을 느껴보세요!!! </h3>
+                        <p>모노레일 이용시간 07:00 ~ 21:00 (6월 ~ 9월)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>모노레일 탑승정원 최대8명</p>
+                            <h2>0<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best2.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>누리마루 APEC 하우스 동백섬의 능선을 형상화한 건물
+                            역대 정상회의장 최고의 경치느껴보세요!</h3>
+                        <p>9:00 ~ 17:00 (월요일휴무)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best3.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>광안리 해수욕장 매년 열리는 불꽃축제와 시원한 바다로 여름의 스트레스를 날려버리세요!!!</h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best4.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>감천문화마을 골목골목마다 귀여운 그림과 조영물들로 나만의 작은 부산을 눈에 품고 가세요!!!</h3>
+                        <p>09:00 ~ 18:00 (매일)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원 없음</p>
+                            <h2>가이드북 2000<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best5.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>부산 차이나타운 부산안에서만 맛 볼 수 있는 0원으로 즐기는 중국여행!! </h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best6.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>부산 송도해수욕장 이번 여름엔 탁 트인 바다 송도스카이워크의 구름산책로 어때요???</h3>
+                        <p>00:00 ~ 23:59 (매일)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원 없음</p>
+                            <h2>0<span>원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+            <div class="slide-box"><!--slide-box : start-->
+                <a href="#">
+                    <div class="img-box"><!--img-box : start-->
+                        <img src="/images/lcs_busan_best7.png" alt="여행지 배너 이미지">
+                    </div><!--img-box : end-->
+                    <div class="text-box"><!--text-box : start-->
+                        <h3>부산아쿠아리움 이번 여름도 찾아온 시원하고 신기한 바닷속 생물구경 물고기천국????</h3>
+                        <p>10:00 ~ 20:00 (월~목)<br>09:00 ~ 22:00 (금 ~ 공휴일)</p>
+                        <div class="pay-box"><!-- pay-box : start-->
+                            <p>정원없음</p>
+                            <h2>평균가<span>약23000원</span></h2>
+                        </div><!--pay-box : end-->
+                    </div><!-- text-box : end-->
+                </a>
+            </div><!--slide-box : end-->
+
+        </div><!--regular : end-->
+        <div class="background"></div>
+
+    </section><!--main-education : end-->
+
+    <section id="review-warp" class="inner"><!--review-warp : start-->
+        <h2>여행객 한 줄 <span>후기</span></h2>
+        <p>여행객 분들의 생생한 한줄후기를 만나보세요</p>
+        <div class="content-box"><!--content-box : start-->
+            <ul id="rolling_notice" class="rolling">
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>lcs***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>초량 이바구길 168계단</h2>
+                        <p>(구)백제병원 건물로부터 168계단이 있는 곳까지 가려면 조금 걸어야 하는데 문득 본인이
+                            잘 가고 있는지는 걱정할 필요가 없습니다. 중간중간에 계단에도 이렇게 위치를 알려주는 곳이 있어 잘 보고 가시면 길 잃어버릴 일이 없어요! 또한 이바구길에서만 찾아볼 수 있는 포토존도 있어 이곳에서도 사진 많이 찍어가시길 바랄게요!
+                            <!--                            [출처] 부산여행의 시작은 바로 이곳에서! 초량 이바구길 방문기①|작성자 대한민국 행정안전부-->
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>lsy***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>초량 이바구길 168계단</h2>
+                        <p>168계단 바로 앞에 도착했는데 생각보다 경사가 엄청나다는 것을 실감하실 수 있습니다. 하지만 케이블카 있습니다...
+                            저처럼 모르고 생고생하지마십셔 풍경은 절경 그자체입니다!!!
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>csh***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>광안리 해수욕장</h2>
+                        <p> 실제로 다녀오니깐 생각보다 볼거리와 놀거리가 많았고 오락실에서도 매우 재밌게 놀았습니다.
+                            또 거기 주변에 샤브향이라는 맛집있었는데 거기 가서 음식을 먹었을 때 되게
+                            맛있게 먹었던 기억이 남아있습니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>dga***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>부산 차이나타운</h2>
+                        <p> 부산 최대의 중국인 거주 지역입니다.
+                            이 곳에는 화교학교와 먹방 TV프로그램에 나온 만두 맛집뿐 아니라 많은 중국인들이 운영하는 음식점들이
+                            밀집한 곳입니다. 거리를 온통 홍등으로 장식하여 중국 분위기를 느낄 수 있습니다.
+                            초량 이바구길 구경을 끝내고 내려오는 길에 들렀다 가면 좋을 듯 합니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>msy***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>영도 절영전망대</h2>
+                        <p>영도 하늘전망대에서 바라보는 풍경은 이로 말할것도 없었다... 백문이 불여일견 다녀오는걸 추천합니다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>hjt***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>감천 문화마을</h2>
+                        <p>사진찍기 좋아한다 하면 꼭 가보자 정말 다향한 그림과 거리들을 보며 나만의
+                            부산을 손에 얻고 돌아올 수 있어 강추한다.
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>ohj***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>부산 아쿠아리움</h2>
+                        <p>주말에 방문했는데 가격은 조금 있었지만 인터넷을 통하면 저렴하게 구입할 수 있다. 개인적으로 돈값은 한듯
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+                <li>
+                    <div class="img-box"><!--img-box : start-->
+                        <div class="icon">
+                            <img src="/images/review-img2.png" alt="리뷰 아이콘">
+                        </div>
+                        <p>mic***</p>
+                    </div><!--img-box : end-->
+                    <a href="#" class="text-box"><!--text-box : start -->
+                        <h2>부산 송도 해수욕장</h2>
+                        <p> 탁트인 바다 특히 구름산책로로 걸어가며 바라보는 밑의 풍경이란
+                            크으... 시원한 바닷바람 느끼고 왔다 개인적으로 강추!!!
+                        </p>
+                    </a> <!--text-box : end-->
+                </li>
+
+            </ul>
+        </div><!--content-box :end-->
+    </section><!-- review-warp :end-->
+    <section id="information" class="inner"><!-- information : start-->
+        <div class="information-left"><!--information-left : start-->
+            <p class="title">축제소개</p>
+            <div class="regular slider">
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival1.jpg" alt="조선통신사축제">
+                    </a>
+                    <p class="text">조선통신사축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival2.jpg" alt="부산연등축제"></a>
+                    <p class="text">부산연등축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival3.jpg" alt="정월대보름달맞이축제"></a>
+                    <p class="text">정월대보름달맞이축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival4.jpg" alt="해운대모래축제"></a>
+                    <p class="text">해운대모래축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival5.jpg" alt="수국꽃문화축제"></a>
+                    <p class="text">수국꽃문화축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival6.jpg" alt="부산바다축제"></a>
+                    <p class="text">부산바다축제</p>
+                </div>
+                <div>
+                    <a href="#"><img src="/images/lcs_busan_festival7.jpg" alt="부산불꽃축제"></a>
+                    <p class="text">부산불꽃축제</p>
+                </div>
+            </div>
+        </div><!--information-left : end-->
+    </section><!-- information : end-->
+</div>
+</body>
+
+</html>

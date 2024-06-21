@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class lcsTripService {
 
     public void fetchAndSaveTripData() {
         String apiUrl = "https://apis.data.go.kr/6260000/AttractionService/getAttractionKr";
-        String apiKey = "CZCg%2BDiqxG98rGHOe6c4zVq8kDyfNCZhS%2FO98r%2BvIso25SDRurYTDLJIY3gZ5zvFToAmpB6kQPn5vbcsYTOwNg%3D%3D";
+        String apiKey = "ViNhf9KFHrhlepP82G2riFCwzySQxL4juLIE5itFGrf8lpCixgdypSpsC930g7033hqAO8PKM99K5eNbt13uSA==";
 
         RestTemplate restTemplate = new RestTemplate();
         String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=20";
@@ -32,13 +33,13 @@ public class lcsTripService {
             XmlMapper mapper = new XmlMapper();
             JsonNode root = mapper.readTree(response);
 
-            JsonNode itemsNode = root.path("response").path("body").path("items").path("item");
+            JsonNode itemsNode = root.path("body").path("items").path("item");
 
             // 변환된 json 구조
             System.out.println("JSON 구조: " + root);
 
             // itemsNode 출력
-            System.out.println("MAIN_TITLE Node: " + root.path("body").path("items").path("item").path("MAIN_TITLE").asText(null));
+            System.out.println("itemsNode: " + itemsNode);
 
             List<lcsTrip> trips = new ArrayList<>();
             for (JsonNode node : itemsNode) {
@@ -49,6 +50,7 @@ public class lcsTripService {
                         .trip_lat(node.path("LAT").asText(null))
                         .trip_lng(node.path("LNG").asText(null))
                         .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText(null))
+                        .trip_day(LocalDateTime.now())
                         .build();
                 trips.add(trip);
             }

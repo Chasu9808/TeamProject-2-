@@ -3,6 +3,8 @@ package com.busanit501.teamproject2.lcs.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "lcstrip")
 @Builder
@@ -37,7 +39,8 @@ public class lcsTrip extends BaseEntity{
     // 여행지 지역
 
     @Column(nullable = false)
-    private String trip_day;
+//    private String trip_day;
+    private LocalDateTime trip_day;
     // 여행지 운영날짜
 
     @Column(nullable = false)

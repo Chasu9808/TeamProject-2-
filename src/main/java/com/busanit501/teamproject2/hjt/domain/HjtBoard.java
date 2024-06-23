@@ -1,4 +1,4 @@
 package com.busanit501.teamproject2.hjt.domain;
 
-public class hjt {
+public class HjtBoard {
 }

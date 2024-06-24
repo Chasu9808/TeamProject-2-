@@ -84,4 +84,12 @@ public class HjtBoardRepositoryTest {
         List<HjtTripBoard> list = result.getContent();
         list.forEach(hjtTripBoard -> log.info(hjtTripBoard));
     }// hjtTestPaging end
+
+    @Test
+    public void testSearch() {
+
+        Pageable pageable = PageRequest.of(1, 10, Sort.by("tripBno").descending());
+        // 실행 여부를 확인 해보기.
+        hjtBoardRepository.search(pageable);
+    }
 }

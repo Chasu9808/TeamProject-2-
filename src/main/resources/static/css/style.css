@@ -1106,6 +1106,22 @@ nav .nav-box .nav-btn:hover>a::after {
 
 /***********************footer****************************/
 
+#last-info {
+  width: 95%;
+
+}
+
+#last-info .sqa .title {
+  font-size: 1.3rem;
+  top: 10px;
+  padding: 2% 0%;
+}
+
+#last-info .sqa .content .phon p {
+  font-size: 1.3rem;
+
+}
+
 #footer-wrap {
   background: #5E5E5E;
   padding: 25px 0px
@@ -1274,37 +1290,48 @@ nav .nav-box .nav-btn:hover>a::after {
 /*여행 상세 페이지*/
 /* 스타일.css */
 
- .lcstripcontainer {
-   margin: 0 auto;
-   width: 90%;
-   max-width: 1200px;
- }
-
-.lcstripdetailtext-container {
-  margin-left: 10px; /* 왼쪽 여백 추가 */
+.lcstripcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .lcstripdetail-container {
   display: flex;
-  flex-wrap: wrap;
-  margin-top: 0px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .lcstripdetailimage-container {
-  flex: 1 1 30%;
-  max-width: 30%;
+  flex: 1;
   margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .lcstripdetailimage-container img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  margin-bottom: 10px; /* Add some space between the image and the address/operating date */
 }
 
 .lcstripdetailinfo-container {
-  flex: 1 1 60%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
-.lcstripdetailinfo-container .coordinates{
+
+.lcstripdetailinfo-short {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lcstripdetailinfo-container .coordinates {
   display: none;
 }
 

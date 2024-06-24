@@ -30,13 +30,15 @@
             <div class="lcstripdetail-container">
                 <div class="lcstripdetailimage-container">
                     <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
+                    <div class="lcstripdetailinfo-short">
+                        <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
+                        <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
+                    </div>
                 </div>
                 <div class="lcstripdetailinfo-container">
                     <p th:text="${trip.trip_description}"></p>
-                    <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
                     <p class="coordinates"><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
                         <span th:text="${trip.trip_lng}"></span></p>
-                    <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
                 </div>
             </div>
         </div>

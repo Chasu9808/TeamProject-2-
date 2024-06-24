@@ -1228,6 +1228,96 @@ nav .nav-box .nav-btn:hover>a::after {
   opacity: 1;
 }
 
+/*trip 페이지*/
+
+.trip-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px; /* 양 끝 여백 추가 */
+}
+
+.trip-card {
+  width: calc(33.33% - 20px); /* 각 카드의 너비를 30%로 설정하고 양쪽 마진 고려 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px; /* 카드 사이의 세로 간격 설정 */
+  margin: 10px; /* 카드 양쪽 마진 추가 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.info-container {
+  padding: 16px; /* 내부 패딩 추가 */
+}
+
+.info-container p {
+  max-height: 4.8em;
+  margin: 0;
+  line-height: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 숨기기 설정 */
+.info-container .coordinates {
+  display: none;
+}
+
+/*여행 상세 페이지*/
+/* 스타일.css */
+
+ .lcstripcontainer {
+   margin: 0 auto;
+   width: 90%;
+   max-width: 1200px;
+ }
+
+.lcstripdetailtext-container {
+  margin-left: 10px; /* 왼쪽 여백 추가 */
+}
+
+.lcstripdetail-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0px;
+}
+
+.lcstripdetailimage-container {
+  flex: 1 1 30%;
+  max-width: 30%;
+  margin-right: 20px;
+}
+
+.lcstripdetailimage-container img {
+  width: 100%;
+  height: auto;
+}
+
+.lcstripdetailinfo-container {
+  flex: 1 1 60%;
+}
+.lcstripdetailinfo-container .coordinates{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
 /****************반응형**********************/
 
 @media all and (max-width:1200px) {
@@ -1372,7 +1462,7 @@ nav .nav-box .nav-btn:hover>a::after {
     left: 142px;
   }
 
-  #Quick .Quick-menu>li {
+  #Quick .Quick-menu > li {
     margin-left: 35px;
   }
 
@@ -1389,7 +1479,7 @@ nav .nav-box .nav-btn:hover>a::after {
     margin: 4px 0px 14px 0px;
   }
 
-  #Quick .Quick-menu>li>ul {
+  #Quick .Quick-menu > li > ul {
     font-size: 0.9rem;
   }
 
@@ -1429,40 +1519,38 @@ nav .nav-box .nav-btn:hover>a::after {
     width: 32%;
   }
 
-#main-triptitle .btn_pause {
+  #main-triptitle .btn_pause {
 
-  top: 85px;
-}
+    top: 85px;
+  }
 
-#sns {
-  width: 95%;
-  padding: 29px 25px;
-}
-#sns .sns-left {
-  align-items: flex-start;
-  width: 46%;
-  flex-direction: column;
-}
-#sns .sns-right {
-  width: 87%;
-}
-#sns .sns-left h2 {
+  #sns {
+    width: 95%;
+    padding: 29px 25px;
+  }
 
-  border-right: 0;
+  #sns .sns-left {
+    align-items: flex-start;
+    width: 46%;
+    flex-direction: column;
+  }
 
-}
-#sns .sns-left p {
-  margin-left: 11px;
-}
-}
+  #sns .sns-right {
+    width: 87%;
+  }
 
-@media all and (max-width:800px) {
-  #center-banner {
-    flex-wrap: wrap;
+  #sns .sns-left h2 {
+
+    border-right: 0;
+
+  }
+
+  #sns .sns-left p {
+    margin-left: 11px;
   }
 
   #center-banner .center {
-    width: calc((100% - 20px)/2);
+    width: calc((100% - 20px) / 2);
     flex-wrap: wrap;
     justify-content: center;
   }
@@ -1472,11 +1560,11 @@ nav .nav-box .nav-btn:hover>a::after {
 
   }
 
-  #Quick .Quick-menu>li {
+  #Quick .Quick-menu > li {
     margin-left: 31px;
   }
 
-  #Quick .Quick-menu>li:first-child {
+  #Quick .Quick-menu > li:first-child {
     margin: 0;
   }
 
@@ -1528,17 +1616,5 @@ nav .nav-box .nav-btn:hover>a::after {
     right: 0px;
   }
 
-  #last-info .sqa {
-    width: 98%;
-    margin-left: 0px;
-  }
 
-  div.container .lcsTripList .info-container p {
-    max-height: 4.8em;
-    margin: 0;
-    line-height: 1.2em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
 }
-

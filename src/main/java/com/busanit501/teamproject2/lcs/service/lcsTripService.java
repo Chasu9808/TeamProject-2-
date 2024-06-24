@@ -64,4 +64,8 @@ public class lcsTripService {
     public List<lcsTrip> getAllTrips() {
         return repository.findAll();
     }
+
+    public lcsTrip getTripById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
 }

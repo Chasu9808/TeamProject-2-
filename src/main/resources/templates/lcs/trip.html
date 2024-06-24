@@ -24,27 +24,27 @@
 
 <body>
 <div layout:fragment="content">
-    <section id="trip-list">
     <div id="wrap">
         <div class="container">
             <h1 class="my-4">여행리스트</h1>
-            <div th:each="trip : ${lcsTripList}" class="lcsTripList">
-                <div class="image-container">
-                    <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
-                </div>
-                <div class="info-container">
-                    <h2 th:text="${trip.trip_name}"></h2>
-                    <p th:text="${trip.trip_description}"></p>
-                    <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
-                    <p><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
-                        <span th:text="${trip.trip_lng}"></span></p>
-                    <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
-                </div>
-                <div style="clear: both;"></div>
+            <div class="trip-container">
+                <a th:each="trip : ${lcsTripList}" th:href="@{/lcs/detail/{id}(id=${trip.trip_id})}" class="trip-card">
+                    <div class="image-container">
+                        <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
+                    </div>
+                    <div class="info-container">
+                        <h2 th:text="${trip.trip_name}"></h2>
+                        <p th:text="${trip.trip_description}"></p>
+                        <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
+                        <!-- 위도, 경도 부분 숨기기 -->
+                        <p class="coordinates"><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
+                            <span th:text="${trip.trip_lng}"></span></p>
+                        <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
+                    </div>
+                </a>
             </div>
         </div>
     </div><!--sns-right: end-->
-    </section>
 </div><!--wrap-->
 </body>
 </html>

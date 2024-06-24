@@ -45,9 +45,6 @@ public class msyMemberController {
     @PostMapping("/join")
     public String joinPost(msyMemberDTO memberDTO,
                            RedirectAttributes redirectAttributes) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate birthDate = LocalDate.parse(msyMemberDTO.builder().birth(memberDTO.getBirth()).toString(), formatter);
-        LocalDateTime birthDateTime = birthDate.atStartOfDay();
         try {
             memberService.join(memberDTO);
         } catch (msyMemberService.MidExistException e) {

@@ -19,7 +19,6 @@ public interface msyMemberService {
                 .name(memberDTO.getName())
                 .email(memberDTO.getEmail())
                 .phone(memberDTO.getPhone())
-                .birth(memberDTO.getBirth())
                 .build();
 
         return member;
@@ -32,7 +31,6 @@ public interface msyMemberService {
                 .name(member.getName())
                 .email(member.getEmail())
                 .phone(member.getPhone())
-                .birth(member.getBirth())
                 .build();
 
         return memberDTO;

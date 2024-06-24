@@ -26,8 +26,6 @@ public class msyMember extends BaseEntity {
     private String name;
     private String email;
     private String phone;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDateTime birth;
 
     // 멤버를 조회시 roleSet 를 같이 조회를 하기.
     @ElementCollection(fetch = FetchType.LAZY)

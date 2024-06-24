@@ -20,7 +20,6 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     private String name;
     private String email;
     private String phone;
-    private LocalDateTime birth;
     //소셜 로그인 정보
     private Map<String, Object> props;
 
@@ -28,7 +27,7 @@ public class MemberSecurityDTO extends User implements OAuth2User {
     public MemberSecurityDTO(
             //로그인한 유저이름.
             String username,String password,String name,
-            String email, String phone, LocalDateTime birth,
+            String email, String phone,
             //GrantedAuthority 를 상속한 클래스는 아무나 올 수 있다. 타입으로
             Collection<? extends GrantedAuthority> authorities
     ){
@@ -38,7 +37,6 @@ public class MemberSecurityDTO extends User implements OAuth2User {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.birth = birth;
     }
 
     // 카카오 인증 연동시, 필수 재정의 메서드

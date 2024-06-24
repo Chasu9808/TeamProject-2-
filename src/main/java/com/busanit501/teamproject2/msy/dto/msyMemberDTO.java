@@ -13,5 +13,4 @@ public class msyMemberDTO {
     private String name;
     private String email;
     private String phone;
-    private LocalDateTime birth;
 }

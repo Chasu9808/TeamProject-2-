@@ -70,11 +70,8 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
             memberRepository.save(member);
 
             // entitty -> DTO
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate birthDate = LocalDate.parse("2000-07-28", formatter);
-            LocalDateTime birth = birthDate.atStartOfDay();
             MemberSecurityDTO memberSecurityDTO =
-                    new MemberSecurityDTO(email, "1234", "이희지", email, "010-1234-5678", birth, Arrays.asList(
+                    new MemberSecurityDTO(email, "1234", "이희지", email, "010-1234-5678",  Arrays.asList(
                             new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setProps(paramMap);
             return memberSecurityDTO;
@@ -89,7 +86,6 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
                             member.getName(),
                             member.getEmail(),
                             member.getPhone(),
-                            member.getBirth(),
                             member.getRoleSet().stream().map(
                                     memberRole -> new SimpleGrantedAuthority("ROLE_" + memberRole.name())
 

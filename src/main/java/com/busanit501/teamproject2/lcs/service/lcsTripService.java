@@ -11,7 +11,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class lcsTripService {
@@ -67,5 +69,11 @@ public class lcsTripService {
 
     public lcsTrip getTripById(Long id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public List<lcsTrip> getRandomTrips(int count) {
+        List<lcsTrip> allTrips = repository.findAll();
+        Collections.shuffle(allTrips);
+        return allTrips.stream().limit(count).collect(Collectors.toList());
     }
 }

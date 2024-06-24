@@ -1246,6 +1246,10 @@ nav .nav-box .nav-btn:hover>a::after {
 
 /*trip 페이지*/
 
+.besttrip {
+  text-align: center;
+}
+
 .trip-container {
   display: flex;
   flex-wrap: wrap;

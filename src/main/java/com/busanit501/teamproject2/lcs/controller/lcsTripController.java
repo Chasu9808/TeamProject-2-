@@ -43,5 +43,10 @@ public class lcsTripController {
         return "lcs/trip-detail"; // lcs/trip-detail.html을 반환
     }
 
-
+    @GetMapping("/trip-random")
+    public String showRandomTrips(Model model) {
+        List<lcsTrip> randomTrip = tripService.getRandomTrips(3);
+        model.addAttribute("randomTrip", randomTrip);
+        return "/lcs/trip-random";
+    }
 }

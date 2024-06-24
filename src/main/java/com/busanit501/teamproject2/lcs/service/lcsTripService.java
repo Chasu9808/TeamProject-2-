@@ -26,7 +26,7 @@ public class lcsTripService {
         String apiKey = "ViNhf9KFHrhlepP82G2riFCwzySQxL4juLIE5itFGrf8lpCixgdypSpsC930g7033hqAO8PKM99K5eNbt13uSA==";
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=20";
+        String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=21";
 
         try {
             ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);

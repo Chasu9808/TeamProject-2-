@@ -4,17 +4,18 @@ import com.busanit501.teamproject2.lcs.domain.lcsTrip;
 import com.busanit501.teamproject2.lcs.repository.lcsTripRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Log4j2
 @Service
 public class lcsTripService {
 
@@ -27,6 +28,7 @@ public class lcsTripService {
 
         RestTemplate restTemplate = new RestTemplate();
         String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=21";
+        log.info("Data 처리유무 : " + url);
 
         try {
             ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
@@ -53,7 +55,6 @@ public class lcsTripService {
                         .trip_lng(node.path("LNG").asText(null))
                         .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText(null))
                         .trip_day(node.path("USAGE_DAY_WEEK_AND_TIME").asText(null))
-
                         .build();
                 trips.add(trip);
             }

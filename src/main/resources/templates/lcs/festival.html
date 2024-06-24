@@ -26,25 +26,25 @@
 <div layout:fragment="content">
     <div id="wrap">
         <div class="container">
-            <h1 class="besttrip">랜덤 여행 리스트</h1>
-            <div class="trip-container">
-                <a th:each="trip : ${randomTrip}" th:href="@{/lcs/detail/{id}(id=${trip.trip_id})}" class="trip-card">
+            <h1 class="bestfestival">추천여행리스트</h1>
+            <div class="festival-container">
+                <a th:each="festival : ${lcsFestivalList}" th:href="@{/lcs/festivaldetail/{id}(id=${festival.festival_id})}" class="festival-card">
                     <div class="image-container">
-                        <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
+                        <img th:src="${festival.festival_imageUrl}" th:alt="${festival.festival_name}" class="img-fluid">
                     </div>
                     <div class="info-container">
-                        <h2 th:text="${trip.trip_name}"></h2>
-                        <p th:text="${trip.trip_description}"></p>
-                        <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
+                        <h2 th:text="${festival.festival_name}"></h2>
+                        <p th:text="${festival.festival_description}"></p>
+                        <p><strong>주소</strong> <span th:text="${festival.festival_address}"></span></p>
                         <!-- 위도, 경도 부분 숨기기 -->
-                        <p class="coordinates"><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
-                            <span th:text="${trip.trip_lng}"></span></p>
-                        <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
+                        <p class="coordinates"><strong>위도,경도</strong> <span th:text="${festival.festival_lat}"></span>,
+                            <span th:text="${festival.festival_lng}"></span></p>
+                        <p><strong>진행날짜</strong> <span th:text="${festival.festival_day}"></span></p>
                     </div>
                 </a>
             </div>
         </div>
-    </div>
-</div>
+    </div><!--sns-right: end-->
+</div><!--wrap-->
 </body>
 </html>

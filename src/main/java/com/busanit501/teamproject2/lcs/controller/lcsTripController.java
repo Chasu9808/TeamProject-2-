@@ -50,4 +50,6 @@ public class lcsTripController {
         model.addAttribute("randomTrip", randomTrip);
         return "/lcs/trip-random";
     }
+
+
 }

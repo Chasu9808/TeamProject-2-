@@ -1339,6 +1339,100 @@ nav .nav-box .nav-btn:hover>a::after {
   display: none;
 }
 
+/*festival 페이지*/
+
+.bestfestival {
+  text-align: center;
+}
+
+.festival-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 15px; /* 양 끝 여백 추가 */
+}
+
+.festival-card {
+  width: calc(33.33% - 20px); /* 각 카드의 너비를 30%로 설정하고 양쪽 마진 고려 */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 16px; /* 카드 사이의 세로 간격 설정 */
+  margin: 10px; /* 카드 양쪽 마진 추가 */
+  box-sizing: border-box; /* 패딩과 테두리를 포함한 크기 계산 */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.info-container {
+  padding: 16px; /* 내부 패딩 추가 */
+}
+
+.info-container p {
+  max-height: 4.8em;
+  margin: 0;
+  line-height: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 숨기기 설정 */
+.info-container .coordinates {
+  display: none;
+}
+
+/*축제 상세 페이지*/
+/* 스타일.css */
+
+.lcsfestivalcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lcsfestivaldetail-container {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.lcsfestivaldetailimage-container {
+  flex: 1;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lcsfestivaldetailimage-container img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px; /* Add some space between the image and the address/operating date */
+}
+
+.lcsfestivaldetailinfo-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.lcsfestivaldetailinfo-short {
+  width: 100%;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.lcsfestivaldetailinfo-container .coordinates {
+  display: none;
+}
 
 
 

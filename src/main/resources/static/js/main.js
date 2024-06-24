@@ -168,6 +168,13 @@ $(function () {
 		});
 	});
 
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById('tripCategory').addEventListener('change', function() {
+			const selectedCategory = this.value;
+			window.location.href = `/lcs/search-result?category=${selectedCategory}`;
+		});
+	});
+
 })//ready
 
 

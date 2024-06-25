@@ -1,7 +1,7 @@
 package com.busanit501.teamproject2.hjt.dto;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,15 +13,14 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HjtBoardDTO {
+public class HjtReplyDTO {
+    private Long tripRno;
+    @NotNull
     private Long tripBno;
     @NotEmpty
-    @Size(min = 3, max = 100)
-    private String tripTitle;
+    private String replyText;
     @NotEmpty
-    private String tripContent;
-    @NotEmpty
-    private String tripWriter;
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
+    private String replyer;
+
+    private LocalDateTime regDate, modDate;
 }

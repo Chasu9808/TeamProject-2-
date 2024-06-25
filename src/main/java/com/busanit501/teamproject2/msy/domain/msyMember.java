@@ -1,6 +1,5 @@
 package com.busanit501.teamproject2.msy.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -10,7 +9,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 

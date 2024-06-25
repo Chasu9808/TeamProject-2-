@@ -11,7 +11,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class lcsTripService {
@@ -24,7 +26,7 @@ public class lcsTripService {
         String apiKey = "ViNhf9KFHrhlepP82G2riFCwzySQxL4juLIE5itFGrf8lpCixgdypSpsC930g7033hqAO8PKM99K5eNbt13uSA==";
 
         RestTemplate restTemplate = new RestTemplate();
-        String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=20";
+        String url = apiUrl + "?serviceKey=" + apiKey + "&pageNo=1&numOfRows=21";
 
         try {
             ResponseEntity<String> responseEntity = restTemplate.getForEntity(url, String.class);
@@ -50,7 +52,8 @@ public class lcsTripService {
                         .trip_lat(node.path("LAT").asText(null))
                         .trip_lng(node.path("LNG").asText(null))
                         .trip_imageUrl(node.path("MAIN_IMG_THUMB").asText(null))
-                        .trip_day(LocalDateTime.now())
+                        .trip_day(node.path("USAGE_DAY_WEEK_AND_TIME").asText(null))
+
                         .build();
                 trips.add(trip);
             }
@@ -62,5 +65,15 @@ public class lcsTripService {
 
     public List<lcsTrip> getAllTrips() {
         return repository.findAll();
+    }
+
+    public lcsTrip getTripById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public List<lcsTrip> getRandomTrips(int count) {
+        List<lcsTrip> allTrips = repository.findAll();
+        Collections.shuffle(allTrips);
+        return allTrips.stream().limit(count).collect(Collectors.toList());
     }
 }

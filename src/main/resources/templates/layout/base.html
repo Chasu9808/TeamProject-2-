@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
@@ -32,7 +33,7 @@
                 </div><!--logo : end-->
                 <div class="util-box"><!--util-box : start-->
                     <a href="/msy/login">로그인</a>
-                    <a href="/msy/signup">회원가입</a>
+                    <a href="/msy/join">회원가입</a>
                     <a href="/lcs/list">사이트맵</a>
                 </div><!--util-box : end-->
             </div><!--top=wrap: end-->
@@ -42,22 +43,22 @@
             <nav>
                 <ul class="nav-box"><!-- nav-box : start-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="/lcs/trip">여행지</a>
+                        <div>여행지</div>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="/lcs/trip_best">추천 여행지</a></li>
-                            <li><a href="/lcs/trip_random">랜덤 여행지</a></li>
+                            <li><a href="/lcs/trip">추천 여행지</a></li>
+                            <li><a href="/lcs/trip-random">랜덤 여행지</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="/ohj/festival">축제</a>
+                        <div>축제</div>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">축제 리스트</a></li>
+                            <li><a href="/ohj/festival">축제 리스트</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
-                        <a href="/lcs/trip_select">맞춤 여행지</a>
+                        <div>맞춤 여행지</div>
                         <ul class="nav-list"><!--nav-list : start-->
-                            <li><a href="#">맞춤 여행지</a></li>
+                            <li><a href="/lcs/trip-select-category">맞춤 여행지</a></li>
                         </ul><!--nav-list : end-->
                     </li><!--nav-btn : end-->
                     <li class="nav-btn"> <!--nav-btn : start-->
@@ -71,6 +72,10 @@
             </nav>
         </div><!-- bottom-wrap : end-->
     </header><!--header : end-->
+
+    <div layout:fragment="content">
+        <p> 컨텐트영역</p>
+    </div>
 
     <section id="last-info" class="inner"><!--last-info : start-->
         <div class="banner-box"><!--banner-box : start-->
@@ -91,7 +96,7 @@
             </div><!--content : end-->
         </div><!--sqa : end-->
     </section><!--last-info : end-->
-    <section id="sns"class="inner"><!--sns : start-->
+    <section id="sns" class="inner"><!--sns : start-->
         <div class="sns-left"><!--sns-left : start-->
             <h2>Trip With Me<span>SNS</span></h2>
             <p>실시간 소식을 편리하게 확인해보세요!</p>

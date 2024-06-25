@@ -26,9 +26,9 @@
 <div layout:fragment="content">
     <div id="wrap">
         <div class="container">
-            <h1 class="besttrip">추천여행리스트</h1>
+            <h1 class="besttrip">랜덤 여행 리스트</h1>
             <div class="trip-container">
-                <a th:each="trip : ${lcsTripList}" th:href="@{/lcs/detail/{id}(id=${trip.trip_id})}" class="trip-card">
+                <a th:each="trip : ${randomTrip}" th:href="@{/lcs/detail/{id}(id=${trip.trip_id})}" class="trip-card">
                     <div class="image-container">
                         <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
                     </div>
@@ -41,10 +41,10 @@
                             <span th:text="${trip.trip_lng}"></span></p>
                         <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
-    </div><!--sns-right: end-->
-</div><!--wrap-->
+    </div>
+</div>
 </body>
 </html>

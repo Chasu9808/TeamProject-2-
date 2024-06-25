@@ -9,7 +9,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 
-    <title>TripWithMe 페이지</title>
+    <title>TripWithMe - 여행 상세 페이지</title>
 
     <link th:href="@{/css/common.css}" rel="stylesheet">
     <link th:href="@{/css/swiper-min.css}" rel="stylesheet">
@@ -25,23 +25,21 @@
 <body>
 <div layout:fragment="content">
     <div id="wrap">
-        <div class="container">
-            <h1 class="besttrip">추천여행리스트</h1>
-            <div class="trip-container">
-                <a th:each="trip : ${lcsTripList}" th:href="@{/lcs/detail/{id}(id=${trip.trip_id})}" class="trip-card">
-                    <div class="image-container">
-                        <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
-                    </div>
-                    <div class="info-container">
-                        <h2 th:text="${trip.trip_name}"></h2>
-                        <p th:text="${trip.trip_description}"></p>
+        <div class="lcstripcontainer">
+            <h1 class="lcstripdetailtext-container" th:text="${trip.trip_name}">여행 상세 정보</h1>
+            <div class="lcstripdetail-container">
+                <div class="lcstripdetailimage-container">
+                    <img th:src="${trip.trip_imageUrl}" th:alt="${trip.trip_name}" class="img-fluid">
+                    <div class="lcstripdetailinfo-short">
                         <p><strong>주소</strong> <span th:text="${trip.trip_address}"></span></p>
-                        <!-- 위도, 경도 부분 숨기기 -->
-                        <p class="coordinates"><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
-                            <span th:text="${trip.trip_lng}"></span></p>
                         <p><strong>운영날짜</strong> <span th:text="${trip.trip_day}"></span></p>
                     </div>
-                </a>
+                </div>
+                <div class="lcstripdetailinfo-container">
+                    <p th:text="${trip.trip_description}"></p>
+                    <p class="coordinates"><strong>위도,경도</strong> <span th:text="${trip.trip_lat}"></span>,
+                        <span th:text="${trip.trip_lng}"></span></p>
+                </div>
             </div>
         </div>
     </div><!--sns-right: end-->

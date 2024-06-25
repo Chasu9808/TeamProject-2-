@@ -1,6 +1,7 @@
 package com.busanit501.teamproject2.hjt.controller;
 
 import com.busanit501.teamproject2.hjt.dto.HjtBoardDTO;
+import com.busanit501.teamproject2.hjt.dto.HjtBoardListReplyCountDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageRequestDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageResponseDTO;
 import com.busanit501.teamproject2.hjt.service.HjtBoardService;
@@ -24,7 +25,7 @@ public class HjtBoardController {
 
     @GetMapping("/list")
     public void list(HjtPageRequestDTO hjtPageRequestDTO, Model model) {
-        HjtPageResponseDTO<HjtBoardDTO> hjtResponseDTO = hjtBoardService.list(hjtPageRequestDTO);
+        HjtPageResponseDTO<HjtBoardListReplyCountDTO> hjtResponseDTO = hjtBoardService.listWithReplyCount(hjtPageRequestDTO);
         model.addAttribute("hjtResponseDTO", hjtResponseDTO);
     }
 
@@ -68,13 +69,12 @@ public class HjtBoardController {
             , RedirectAttributes redirectAttributes
             , Model model
             ,HjtPageRequestDTO hjtPageRequestDTO) {
-        // 입력중 유효성 체크에 해당 될 때
+
         if(bindingResult.hasErrors()) {
             log.info("update 중 오류 발생.");
             redirectAttributes.addFlashAttribute(
                     "errors", bindingResult.getAllErrors());
-            // 서버 -> 화면으로 쿼리 스트링으로전달.
-            // 예시 : ?bno=게시글번호
+
             redirectAttributes.addAttribute("tripBno", hjtBoardDTO.getTripBno());
             return "redirect:/hjtboard/update"+hjtPageRequestDTO.getLink();
         }
@@ -93,12 +93,9 @@ public class HjtBoardController {
     ) {
         hjtBoardService.delete(tripBno);
 
-        // 글쓰기 후, 작성된 게시글 번호 -> 화면 , 임시로 전달.(1회용)
         redirectAttributes.addFlashAttribute("result",tripBno);
         redirectAttributes.addFlashAttribute("resultType","delete");
         return "redirect:/hjtboard/list?"+hjtPageRequestDTO.getLink2();
 
     }
-
-
 }

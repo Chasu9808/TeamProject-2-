@@ -2,6 +2,7 @@ package com.busanit501.teamproject2.hjt.service;
 
 import com.busanit501.teamproject2.hjt.domain.HjtTripBoard;
 import com.busanit501.teamproject2.hjt.dto.HjtBoardDTO;
+import com.busanit501.teamproject2.hjt.dto.HjtBoardListReplyCountDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageRequestDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageResponseDTO;
 import com.busanit501.teamproject2.hjt.repository.HjtBoardRepository;
@@ -66,11 +67,27 @@ public class HjtBoardServiceImpl implements HjtBoardService {
         // 서버 -> 화면에 전달할 준비물 준비 작업 완료.
         // 1)페이지 2) 사이즈 3) 전쳇갯수 4) 검색 결과 내역10개(엔티티-> DTO)
         HjtPageResponseDTO hjtPageResponseDTO = HjtPageResponseDTO.<HjtBoardDTO>withAll()
-                .hjtpageRequestDTO(hjtPageRequestDTO)
+                .hjtPageRequestDTO(hjtPageRequestDTO)
                 .dtoList(dtoList)
                 .total((int) result.getTotalElements())
                 .build();
 
+        return hjtPageResponseDTO;
+    }
+
+    @Override
+    public HjtPageResponseDTO<HjtBoardListReplyCountDTO> listWithReplyCount(HjtPageRequestDTO hjtPageRequestDTO) {
+        String[] types = hjtPageRequestDTO.getTypes();
+        String keyword = hjtPageRequestDTO.getKeyword();
+        Pageable pageable = hjtPageRequestDTO.getPageable("tripBno");
+
+        Page<HjtBoardListReplyCountDTO> result = hjtBoardRepository.searchWithReplyCount(types,keyword,pageable);
+
+        HjtPageResponseDTO hjtPageResponseDTO = HjtPageResponseDTO.<HjtBoardListReplyCountDTO>withAll()
+                .hjtPageRequestDTO(hjtPageRequestDTO)
+                .dtoList(result.getContent())
+                .total((int) result.getTotalElements())
+                .build();
         return hjtPageResponseDTO;
     }
 }

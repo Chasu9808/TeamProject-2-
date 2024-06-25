@@ -19,14 +19,14 @@ public class HjtPageResponseDTO<E> {
     private List<E> dtoList;
 
     @Builder(builderMethodName = "withAll")
-    public HjtPageResponseDTO(HjtPageRequestDTO hjtpageRequestDTO,
+    public HjtPageResponseDTO(HjtPageRequestDTO hjtPageRequestDTO,
                               List<E> dtoList, int total) {
         if (total <= 0) {
             return;
         }
 
-        this.page = hjtpageRequestDTO.getPage();
-        this.size = hjtpageRequestDTO.getSize();
+        this.page = hjtPageRequestDTO.getPage();
+        this.size = hjtPageRequestDTO.getSize();
         this.total = total;
         this.dtoList = dtoList;
 

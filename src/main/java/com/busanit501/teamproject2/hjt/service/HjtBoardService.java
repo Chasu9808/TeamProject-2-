@@ -1,6 +1,7 @@
 package com.busanit501.teamproject2.hjt.service;
 
 import com.busanit501.teamproject2.hjt.dto.HjtBoardDTO;
+import com.busanit501.teamproject2.hjt.dto.HjtBoardListReplyCountDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageRequestDTO;
 import com.busanit501.teamproject2.hjt.dto.HjtPageResponseDTO;
 
@@ -10,4 +11,5 @@ public interface HjtBoardService {
     void update(HjtBoardDTO hjtBoardDTO);
     void delete(Long tripBno);
     HjtPageResponseDTO<HjtBoardDTO> list(HjtPageRequestDTO hjtPageRequestDTO);
+    HjtPageResponseDTO<HjtBoardListReplyCountDTO> listWithReplyCount(HjtPageRequestDTO hjtPageRequestDTO);
 }

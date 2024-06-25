@@ -5,6 +5,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @Table(name = "hjttripreply", indexes = {
         @Index(name = "idx_hjt_reply_board_trip_bno", columnList = "HjtTripBoard_tripBno")
@@ -20,4 +21,8 @@ public class HjtTripReply extends HjtBaseEntity {
     private HjtTripBoard hjtTripBoard;
     private String replyText;
     private String replyer;
+
+    public void changText(String text) {
+        this.replyText = text;
+    }
 }

@@ -32,14 +32,12 @@ public class CustomRestAdvice {
 return ResponseEntity.badRequest().body(errorMap);
     }
 
-    // 없는 게시글에 대해서 , 댓글 작성시 예외 처리하기.
     @ExceptionHandler(NoSuchElementException.class)
     @ResponseStatus(HttpStatus.EXPECTATION_FAILED)
     // BindException e = bindingResult;
     public ResponseEntity<Map<String, String>> handleNoSuchElementException(NoSuchElementException e) {
         log.error("handleNoSuchElementException 확인"+e);
-        // 에러 관련 정보 담는 임시 박스
-        // 전달할 데이터,(에러 정보를 가지고 있는 데이터)
+
         Map<String, String> errorMap = new HashMap<>();
        errorMap.put("time",""+System.currentTimeMillis());
         errorMap.put("msg","제약 조건 위반");

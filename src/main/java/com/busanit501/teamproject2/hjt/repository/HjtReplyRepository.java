@@ -13,5 +13,5 @@ public interface HjtReplyRepository extends JpaRepository<HjtTripReply, Long> {
     Page<HjtTripReply> listOfBoard(Long tripBno, Pageable pageable);
 
     void deleteByHjtTripBoard_TripBno(Long tripBno);
-    List<HjtTripReply> findByHjtBoard_TripBno(Long tripBno);
+    List<HjtTripReply> findByHjtTripBoard_TripBno(Long tripBno);
 }

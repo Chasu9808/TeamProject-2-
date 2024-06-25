@@ -63,7 +63,7 @@ public class HjtBoardServiceImpl implements HjtBoardService {
 
     @Override
     public void deleteAll(Long tripBno) {
-        List<HjtTripReply> result = hjtReplyRepository.findByHjtBoard_TripBno(tripBno);
+        List<HjtTripReply> result = hjtReplyRepository.findByHjtTripBoard_TripBno(tripBno);
         boolean checkReply = !result.isEmpty() ? false : true;
         if(checkReply){
             hjtReplyRepository.deleteByHjtTripBoard_TripBno(tripBno);

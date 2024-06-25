@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base.html}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    <title>TripWithMe 페이지</title>
+
+    <link th:href="@{/css/common.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper-min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/slick.css}" rel="stylesheet">
+    <script th:src="@{/js/html5.js}"></script>
+    <script th:src="@{/js/jquery-3.1.1.min.js}"></script>
+    <script src="http://code.jquery.com/jquery-migrate-3.0.0.js"></script>
+    <script th:src="@{/js/slick.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div id="wrap">
+        <div class="container">
+            <h1 class="bestfestival">랜덤 여행 리스트</h1>
+            <div class="festival-container">
+                <a th:each="festival : ${randomFestival}" th:href="@{/lcs/festivaldetail/{id}(id=${festival.festival_id})}" class="festival-card">
+                    <div class="image-container">
+                        <img th:src="${festival.festival_imageUrl}" th:alt="${festival.festival_name}" class="img-fluid">
+                    </div>
+                    <div class="info-container">
+                        <h2 th:text="${festival.festival_name}"></h2>
+                        <p th:text="${festival.festival_description}"></p>
+                        <p><strong>주소</strong> <span th:text="${festival.festival_address}"></span></p>
+                        <!-- 위도, 경도 부분 숨기기 -->
+                        <p class="coordinates"><strong>위도,경도</strong> <span th:text="${festival.festival_lat}"></span>,
+                            <span th:text="${festival.festival_lng}"></span></p>
+                        <p><strong>진행날짜</strong> <span th:text="${festival.festival_day}"></span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

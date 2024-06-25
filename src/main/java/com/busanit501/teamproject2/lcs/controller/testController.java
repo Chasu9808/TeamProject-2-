@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/lcs")
-public class lcsController {
+public class testController {
 
-    @GetMapping("/list")
+    @GetMapping("/test")
     public String showIndexPage() {
-        return "lcs/list";
+        return "/lcs/test";
     }
 }

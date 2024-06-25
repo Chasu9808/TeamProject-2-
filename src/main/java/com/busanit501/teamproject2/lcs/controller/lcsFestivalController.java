@@ -28,7 +28,7 @@ public class lcsFestivalController {
         return "redirect:/lcs/list";
     }
 
-    @GetMapping("/festival") // 기존의 "/trip"을 "/list"로 변경
+    @GetMapping("/festival") // 기존의 "/trip"을 "/festival"로 변경
     public String listFestival(Model model) {
         List<lcsFestival> lcsFestivalList = festivalService.getAllFestival();
         model.addAttribute("lcsFestivalList", lcsFestivalList); // lcsFestival을 lcsFestival로 모델에 추가

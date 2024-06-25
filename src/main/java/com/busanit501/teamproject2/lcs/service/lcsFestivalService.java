@@ -1,9 +1,7 @@
 package com.busanit501.teamproject2.lcs.service;
 
 import com.busanit501.teamproject2.lcs.domain.lcsFestival;
-import com.busanit501.teamproject2.lcs.domain.lcsTrip;
 import com.busanit501.teamproject2.lcs.repository.lcsFestivalRepository;
-import com.busanit501.teamproject2.lcs.repository.lcsTripRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import lombok.extern.log4j.Log4j2;
@@ -26,22 +24,20 @@ public class lcsFestivalService {
 
     public void fetchAndSaveFestivalData() {
         String apiUrl2 = "https://apis.data.go.kr/6260000/FestivalService/getFestivalKr";
-        String apiKey2 = "YM3twPlDAXxCa0mPMwjVb0MLrgh2KKw2MrSt4m6MZw9ALyZp1b6un%2Bi%2BxuN16zxtLi0kc1CKQsY3%2FbBl%2BxxzBQ%3D%3D";
+        String apiKey2 = "YFKD9uxV5cnFGjViao6Fg5bo1Na5MjfFWJ0FKHRSv0A35iCS0o9kjK1/opRCrUBrATa4Hz3p5fmUkUK0kX9yFA==";
 
         RestTemplate restTemplate2 = new RestTemplate();
-        String url = apiUrl2 + "?serviceKey=" + apiKey2 + "&pageNo=1&numOfRows=21";
-        log.info("Data 처리유무 : " + url);
+        String url2 = apiUrl2 + "?serviceKey=" + apiKey2 + "&pageNo=1&numOfRows=21";
+        log.info("Data 처리유무 : " + url2);
 
         try {
-            ResponseEntity<String> responseEntity = restTemplate2.getForEntity(url, String.class);
-            String xmlResponse = responseEntity.getBody();
+            ResponseEntity<String> responseEntity2 = restTemplate2.getForEntity(url2, String.class);
+            String xmlResponse = responseEntity2.getBody();
 
             XmlMapper xmlMapper = new XmlMapper();
             JsonNode jsonRoot = xmlMapper.readTree(xmlResponse);
-            log.info(jsonRoot.toString());
 
             JsonNode jsonItemsNode = jsonRoot.path("body").path("items").path("item");
-            log.info("jsonitemsNode : " + jsonItemsNode);
 
             // 변환된 json 구조 출력
             System.out.println("JSON 구조: " + jsonRoot);

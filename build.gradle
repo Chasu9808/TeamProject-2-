@@ -70,6 +70,11 @@ dependencies {
 // Swagger UI, RESTful 테스트를 위한 화면 제공 툴.
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.5.0'
 
+    // https://mvnrepository.com/artifact/net.coobird/thumbnailator
+    // 썸네일 도구
+    implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.20'
+
+
     // Jackson XML dataformat 의존성 추가
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0'
 

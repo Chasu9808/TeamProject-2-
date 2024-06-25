@@ -92,4 +92,6 @@ public class HjtBoardRepositoryTest {
         // 실행 여부를 확인 해보기.
         hjtBoardRepository.search(pageable);
     }
+
+
 }

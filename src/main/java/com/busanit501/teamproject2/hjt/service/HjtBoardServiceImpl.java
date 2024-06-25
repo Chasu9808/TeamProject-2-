@@ -1,11 +1,10 @@
 package com.busanit501.teamproject2.hjt.service;
 
 import com.busanit501.teamproject2.hjt.domain.HjtTripBoard;
-import com.busanit501.teamproject2.hjt.dto.HjtBoardDTO;
-import com.busanit501.teamproject2.hjt.dto.HjtBoardListReplyCountDTO;
-import com.busanit501.teamproject2.hjt.dto.HjtPageRequestDTO;
-import com.busanit501.teamproject2.hjt.dto.HjtPageResponseDTO;
+import com.busanit501.teamproject2.hjt.domain.HjtTripReply;
+import com.busanit501.teamproject2.hjt.dto.*;
 import com.busanit501.teamproject2.hjt.repository.HjtBoardRepository;
+import com.busanit501.teamproject2.hjt.repository.HjtReplyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -22,22 +21,23 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HjtBoardServiceImpl implements HjtBoardService {
     private final HjtBoardRepository hjtBoardRepository;
+    private final HjtReplyRepository hjtReplyRepository;
     private final ModelMapper modelMapper;
 
 
     @Override
     public Long register(HjtBoardDTO hjtBoardDTO) {
-        HjtTripBoard hjtTripBoard = modelMapper.map(hjtBoardDTO, HjtTripBoard.class);
+        HjtTripBoard hjtTripBoard = dtoToEntity(hjtBoardDTO);
         Long tripBno = hjtBoardRepository.save(hjtTripBoard).getTripBno();
         return tripBno;
     }
 
     @Override
     public HjtBoardDTO read(Long tripBno) {
-        Optional<HjtTripBoard> result = hjtBoardRepository.findById(tripBno);
+        Optional<HjtTripBoard> result = hjtBoardRepository.findByIdWithImages(tripBno);
         HjtTripBoard hjtTripBoard = result.orElseThrow();
-        HjtBoardDTO hjtBoardDTO = modelMapper.map(hjtTripBoard, HjtBoardDTO.class);
-        return null;
+        HjtBoardDTO hjtBoardDTO = entityToDTO(hjtTripBoard);
+        return hjtBoardDTO;
     }
 
     @Override
@@ -45,6 +45,14 @@ public class HjtBoardServiceImpl implements HjtBoardService {
         Optional<HjtTripBoard> result = hjtBoardRepository.findById(hjtBoardDTO.getTripBno());
         HjtTripBoard hjtTripBoard = result.orElseThrow();
         hjtTripBoard.changeTripTitleAndContent(hjtBoardDTO.getTripTitle(),hjtBoardDTO.getTripContent());
+        hjtTripBoard.clearImages();
+
+        if(hjtBoardDTO.getFileNames() != null) {
+            for(String fileName : hjtBoardDTO.getFileNames()){
+                String[] arr = fileName.split("_");
+                hjtTripBoard.addImage(arr[0],arr[1]);
+            }
+        }
         hjtBoardRepository.save(hjtTripBoard);
     }
 
@@ -52,6 +60,19 @@ public class HjtBoardServiceImpl implements HjtBoardService {
     public void delete(Long tripBno) {
         hjtBoardRepository.deleteById(tripBno);
     }
+
+    @Override
+    public void deleteAll(Long tripBno) {
+        List<HjtTripReply> result = hjtReplyRepository.findByHjtBoard_TripBno(tripBno);
+        boolean checkReply = !result.isEmpty() ? false : true;
+        if(checkReply){
+            hjtReplyRepository.deleteByHjtTripBoard_TripBno(tripBno);
+        }
+
+        //게시글 삭제와 첨부 이미지 삭제(썸네일 이미지 삭제도 포함) 포함
+        hjtReplyRepository.deleteById(tripBno);
+    }
+
 
     @Override
     public HjtPageResponseDTO<HjtBoardDTO> list(HjtPageRequestDTO hjtPageRequestDTO) {
@@ -88,6 +109,24 @@ public class HjtBoardServiceImpl implements HjtBoardService {
                 .dtoList(result.getContent())
                 .total((int) result.getTotalElements())
                 .build();
+        return hjtPageResponseDTO;
+    }
+
+    @Override
+    public HjtPageResponseDTO<BoardListAllDTO> listWithAll(HjtPageRequestDTO hjtPageRequestDTO) {
+        String[] types = hjtPageRequestDTO.getTypes();
+        String keyword = hjtPageRequestDTO.getKeyword();
+        Pageable pageable = hjtPageRequestDTO.getPageable("tripBno");
+
+        Page<BoardListAllDTO> result = hjtBoardRepository.searchWithAll(types,keyword,pageable);
+
+        HjtPageResponseDTO<BoardListAllDTO> hjtPageResponseDTO =
+                HjtPageResponseDTO.<BoardListAllDTO>withAll()
+                        .hjtPageRequestDTO(hjtPageRequestDTO)
+                        .dtoList(result.getContent())
+                        .total((int) result.getTotalElements())
+                        .build();
+
         return hjtPageResponseDTO;
     }
 }

@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Builder
 @Table(name = "hjttripreply", indexes = {
-        @Index(name = "idx_hjt_reply_board_trip_bno", columnList = "HjtTripBoard_tripBno")
+        @Index(name = "idx_hjt_reply_board_tripBno", columnList = "hjtTripBoard_tripBno")
 })
 @AllArgsConstructor
 @NoArgsConstructor

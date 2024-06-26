@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,16 +42,18 @@ public class HjtBoardRepositoryTest {
     }//hjtTestInsert end
 
     @Test
+    @Transactional
     public void hjtTestSelect() {
-        Long tripBno = 100L;
+        Long tripBno = 1L;
         Optional<HjtTripBoard> result = hjtBoardRepository.findById(tripBno);
         HjtTripBoard hjtTripBoard = result.orElseThrow();
         log.info("결과화면 : " + hjtTripBoard);
     }//testSelect end
 
     @Test
+    @Transactional
     public void hjtTestUpdate() {
-        Long tripBno = 100L;
+        Long tripBno = 1L;
         Optional<HjtTripBoard> result = hjtBoardRepository.findById(tripBno);
         HjtTripBoard hjtTripBoard = result.orElseThrow();
 
@@ -70,6 +73,7 @@ public class HjtBoardRepositoryTest {
     }// hjtTestDelete end
 
     @Test
+    @Transactional
     public void hjtTestPaging() {
 
         Pageable pageable = PageRequest.of(0,10, Sort.by("tripBno").descending());

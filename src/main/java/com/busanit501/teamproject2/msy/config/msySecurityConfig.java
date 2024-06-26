@@ -1,6 +1,7 @@
 package com.busanit501.teamproject2.msy.config;
 
 import com.busanit501.teamproject2.msy.security.CustomUserDetailsService;
+import com.busanit501.teamproject2.msy.security.handler.CustomSocialLoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -84,11 +86,18 @@ public class msySecurityConfig {
 
         //카카오 로그인 API 설정
         http.oauth2Login(
-                // 로그인 후 처리 , 적용하기.
+                // 로그인 후 처리, 적용하기.
                 oauthLogin -> oauthLogin.loginPage("/msy/login")
+                        .successHandler(authenticationSuccessHandler())
         );
 
         return http.build();
+    }
+
+    // 소셜 로그인 후, 후처리 하는 빈등록.
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new CustomSocialLoginSuccessHandler(passwordEncoder());
     }
 
     // 자동로그인 설정 2

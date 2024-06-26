@@ -1,6 +1,7 @@
 package com.busanit501.teamproject2.msy.security;
 
 import com.busanit501.teamproject2.msy.domain.msyMember;
+import com.busanit501.teamproject2.msy.domain.msyMemberRole;
 import com.busanit501.teamproject2.msy.repository.msyMemberRepository;
 import com.busanit501.teamproject2.msy.security.dto.MemberSecurityDTO;
 import lombok.RequiredArgsConstructor;
@@ -52,6 +53,8 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
                 break;
         }
 
+        log.info("CustomOauth2UserService : email = " + email);
+
         return generateDTO(email, paramMap);
     }
 
@@ -64,16 +67,21 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
             msyMember member = msyMember.builder()
                     .mid(email)
                     .mpw(passwordEncoder.encode("1234"))
+                    .name("이희지")
+                    .phone("010-1234-5678")
                     .email(email)
+                    .social(true)
                     .build();
 
+            member.addRole(msyMemberRole.USER);
             memberRepository.save(member);
 
             // entitty -> DTO
             MemberSecurityDTO memberSecurityDTO =
-                    new MemberSecurityDTO(email, "1234", "이희지", email, "010-1234-5678",  Arrays.asList(
+                    new MemberSecurityDTO(email, "1234", "이희지", email, "010-1234-5678",  false, true, Arrays.asList(
                             new SimpleGrantedAuthority("ROLE_USER")));
             memberSecurityDTO.setProps(paramMap);
+
             return memberSecurityDTO;
         } // 소셜 로그인 한 정보의 이메일이 디비에 없을 경우
         // 직접 로그인한 정보가 있다, 디비에 소셜 로그인한 이메일이 존재 한다면
@@ -86,11 +94,14 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
                             member.getName(),
                             member.getEmail(),
                             member.getPhone(),
+                            member.isDel(),
+                            member.isSocial(),
                             member.getRoleSet().stream().map(
                                     memberRole -> new SimpleGrantedAuthority("ROLE_" + memberRole.name())
 
                             ).collect(Collectors.toList())
                     );
+
             return memberSecurityDTO;
         }
     }
@@ -101,6 +112,7 @@ public class CustomOauth2UserService extends DefaultOAuth2UserService {
         LinkedHashMap accountMap = (LinkedHashMap) value;
 
         String email = (String) accountMap.get("email");
+
         return email;
     }
 

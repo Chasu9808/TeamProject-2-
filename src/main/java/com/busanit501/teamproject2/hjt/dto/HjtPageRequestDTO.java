@@ -27,6 +27,7 @@ public class HjtPageRequestDTO {
     private String link;
     private String link2;
 
+
     public String[] getTypes() {
         if (type == null || type.isEmpty()) {
             return null;

@@ -37,11 +37,9 @@ public class HjtBoardController {
     public void list(HjtPageRequestDTO hjtPageRequestDTO, Model model) {
         HjtPageResponseDTO<BoardListAllDTO> hjtResponseDTO
                 = hjtBoardService.listWithAll(hjtPageRequestDTO);
-        hjtPageRequestDTO.setType("t");
         log.info("HjtBoardController hjtPageRequestDTO 확인 :  " + hjtPageRequestDTO);
         log.info("HjtBoardController hjtResponseDTO 확인 :  " + hjtResponseDTO);
         model.addAttribute("hjtResponseDTO", hjtResponseDTO);
-        model.addAttribute("hjtPageRequestDTO", hjtPageRequestDTO);
     }
 
     @GetMapping("/register")

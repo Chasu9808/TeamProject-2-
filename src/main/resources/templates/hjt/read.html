@@ -15,43 +15,43 @@
                     글조회(read)
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/board/update">
+                    <form method="post" action="/hjt/update">
                         <div class="mb-3">
-                            <label for="title" class="form-label">제목</label>
-                            <input type="text" name="title" class="form-control" id="title" placeholder="제목을 입력해주세요."
-                                   th:value="${boardDTO.title}" readonly>
+                            <label for="tripTitle" class="form-label">제목</label>
+                            <input type="text" name="tripTitle" class="form-control" id="tripTitle" placeholder="제목을 입력해주세요."
+                                   th:value="${hjtBoardDTO.tripTitle}" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="content" class="form-label">내용</label>
-                            <textarea readonly type="text" placeholder="내용을 입력해주세요." name="content" rows="5"
-                                      class="form-control col-sm-5" id="content">[[${boardDTO.content}]]</textarea>
+                            <label for="tripContent" class="form-label">내용</label>
+                            <textarea readonly type="text" placeholder="내용을 입력해주세요." name="tripContent" rows="5"
+                                      class="form-control col-sm-5" id="tripContent">[[${hjtBoardDTO.tripContent}]]</textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="writer" class="form-label">작성자</label>
-                            <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자를 입력해주세요."
-                                   th:value="${boardDTO.writer}" readonly>
+                            <label for="tripWriter" class="form-label">작성자</label>
+                            <input type="text" name="tripWriter" class="form-control" id="tripWriter" placeholder="작성자를 입력해주세요."
+                                   th:value="${hjtBoardDTO.tripWriter}" readonly>
                         </div>
 
                         <div class="mb-3">
                             <label for="regDate" class="form-label">등록시간</label>
                             <input type="text" name="regDate" class="form-control" id="regDate"
-                                   th:value="${#temporals.format(boardDTO.regDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+                                   th:value="${#temporals.format(hjtBoardDTO.regDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
                         </div>
 
                         <div class="mb-3">
                             <label for="modDate" class="form-label">수정시간</label>
                             <input type="text" name="modDate" class="form-control" id="modDate"
-                                   th:value="${#temporals.format(boardDTO.modDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
+                                   th:value="${#temporals.format(hjtBoardDTO.modDate, 'yyyy-MM-dd HH:mm:ss')}" readonly>
                         </div>
 
 <!--                        user 로그인한 유저 임.-->
                         <div class="mb-3" th:with="user=${#authentication.principal}">
-                            <div th:with="link = ${pageRequestDTO.getLink()}">
-                            <a th:if="${user != null && user.username==boardDTO.writer}" th:href="|@{/board/update(bno =${boardDTO.bno})}&${link}|">
+                            <div th:with="link = ${hjtPageRequestDTO.getLink()}">
+                            <a th:if="${user != null && user.username==hjtBoardDTO.tripWriter}" th:href="|@{/hjt/update(tripBno =${hjtBoardDTO.tripBno})}&${link}|">
                                 <button type="button" class="btn btn-primary">수정하기</button>
                             </a>
-                            <a th:href="|@{/board/list}?${link}|">
+                            <a th:href="|@{/hjt/list}?${link}|">
                                 <button type="button" class="btn btn-danger">목록가기</button>
                             </a>
                             </div>
@@ -64,8 +64,8 @@
                 </div>
                 <!--                첨부 이미지 표시하기, 원본 이미지 -->
                 <div class="col">
-                    <div class="card" th:if="${boardDTO.fileNames != null && boardDTO.fileNames.size()>0}">
-                        <img class="card-img-top" th:each="fileName: ${boardDTO.fileNames}"
+                    <div class="card" th:if="${hjtBoardDTO.fileNames != null && hjtBoardDTO.fileNames.size()>0}">
+                        <img class="card-img-top" th:each="fileName: ${hjtBoardDTO.fileNames}"
                              th:src="|/view/${fileName}|">
 
                     </div>
@@ -195,7 +195,7 @@
     // 모달 댓글 폼 표시하기=====================================================
 
 
-    const bno = [[${boardDTO.bno}]]
+    const tripBno = [[${hjtBoardDTO.tripBno}]]
 
     //화면에, 데이터를 넣기 위해서, innerHTML 이용해서, 주입 하기.
     const replyList = document.querySelector(".replyList")
@@ -205,7 +205,7 @@
     function printReplies(page, size, goLast) {
         // // 주입할 html 태그를 이 변수에 넣을 예정.
         // let str = '';
-        getList({bno, page, size, goLast}).then(
+        getList({tripBno, page, size, goLast}).then(
             data => {
                 // 테스트용
                 console.log((data))
@@ -233,8 +233,8 @@
                 str +=
                     `
 <li class="list-group-item d-flex replyItem" >
-<span class="col-2">${dto.rno}</span>
-<span class="col-6" data-rno="${dto.rno}">${dto.replyText}</span>
+<span class="col-2">${dto.tripRno}</span>
+<span class="col-6" data-tripRno="${dto.tripRno}">${dto.replyText}</span>
 <span class="col-2">${dto.replyer}</span>
 <span class="col-2">${dto.regDate}</span>
 </li>
@@ -323,16 +323,16 @@
             return
         }
         // span 태그에 있는 속성 data-rno 값 가져오기.
-        const rno = target.getAttribute("data-rno")
+        const tripRno = target.getAttribute("data-tripRno")
 
         // span 태그 중에서, data-rno 요소가 있는 것만 처리하겠다.
-        if (!rno) {
+        if (!tripRno) {
             return;
         }
 
-        getReply(rno).then(reply => {
-            console.log("조회한 reply : " + reply)
-            replyHeader.innerHTML = reply.rno
+        getReply(tripRno).then(reply => {
+            console.log("조회한 reply : " + tripRno)
+            replyHeader.innerHTML = reply.tripRno
             updateText.value = reply.replyText
             updateModal.show()
 
@@ -360,14 +360,14 @@
     document.querySelector(".registerBtn").addEventListener("click", function (e) {
         // registerModal.hide()
         const replyObj = {
-            bno: bno,
+            tripBno: tripBno,
             replyText: replyText.value,
             replyer: replyer.value
         }
         // reply.js , addReply 이용하기.
         addReply(replyObj).then(result => {
             // 댓글 쓰기 성공 후 처리
-            alert(result.rno + "번 댓글 작성 성공: ")
+            alert(result.tripRno + "번 댓글 작성 성공: ")
             // 모달 창 닫기
             registerModal.hide()
             // 기존 입력폼의 값 비우기
@@ -395,14 +395,14 @@
 
         // registerModal.hide()
         const replyObj = {
-            bno: bno,
-            rno: replyHeader.innerHTML,
+            tripBno: tripBno,
+            tripRno: replyHeader.innerHTML,
             replyText: updateText.value
         }
         // reply.js , updateReply 이용하기.
         updateReply(replyObj).then(result => {
             // 댓글 수정 성공 후 처리
-            alert(result.rno + "번 댓글 수정 성공: ")
+            alert(result.tripRno + "번 댓글 수정 성공: ")
             // 모달 창 닫기
             updateModal.hide()
             // 기존 입력폼의 값 비우기
@@ -433,10 +433,10 @@
             return
         }
 
-        const rno = replyHeader.innerHTML
-        deleteReply(rno).then(result => {
+        const tripRno = replyHeader.innerHTML
+        deleteReply(tripRno).then(result => {
             // 댓글 삭제 성공 후 처리
-            alert(result.rno + "번 댓글 삭제 성공: ")
+            alert(result.tripRno + "번 댓글 삭제 성공: ")
             // 모달 창 닫기
             updateModal.hide()
             // 기존 입력폼의 값 비우기

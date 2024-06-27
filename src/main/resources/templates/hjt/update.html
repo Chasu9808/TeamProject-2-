@@ -14,25 +14,25 @@
                     글수정폼
                 </div>
                 <div class="card-body">
-                    <form method="post" th:action="@{board/update}" id="f1">
-                        <input type="hidden" name="page" th:value="${pageRequestDTO.page}">
-                        <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
-                        <input type="hidden" name="bno" th:value="${boardDTO.bno}">
+                    <form method="post" th:action="@{hjt/update}" id="f1">
+                        <input type="hidden" name="page" th:value="${hjtPageRequestDTO.page}">
+                        <input type="hidden" name="size" th:value="${hjtPageRequestDTO.size}">
+                        <input type="hidden" name="tripBno" th:value="${hjtBoardDTO.tripBno}">
                         <div class="mb-3">
-                            <label for="title" class="form-label">제목</label>
-                            <input type="text" name="title" class="form-control" id="title" placeholder="제목을 입력해주세요."
-                                   th:value="${boardDTO.title}">
+                            <label for="tripTitle" class="form-label">제목</label>
+                            <input type="text" name="tripTitle" class="form-control" id="tripTitle" placeholder="제목을 입력해주세요."
+                                   th:value="${hjtBoardDTO.tripTitle}">
                         </div>
                         <div class="mb-3">
-                            <label for="content" class="form-label">내용</label>
-                            <textarea type="text" placeholder="내용을 입력해주세요." name="content" rows="5"
-                                      class="form-control col-sm-5" id="content">[[${boardDTO.content}]]</textarea>
+                            <label for="tripContent" class="form-label">내용</label>
+                            <textarea type="text" placeholder="내용을 입력해주세요." name="tripContent" rows="5"
+                                      class="form-control col-sm-5" id="tripContent">[[${hjtBoardDTO.tripContent}]]</textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="writer" class="form-label">작성자</label>
-                            <input type="text" name="writer" class="form-control" id="writer" placeholder="작성자를 입력해주세요."
-                                   th:value="${boardDTO.writer}" readonly>
+                            <label for="tripWriter" class="form-label">작성자</label>
+                            <input type="text" name="tripWriter" class="form-control" id="tripWriter" placeholder="작성자를 입력해주세요."
+                                   th:value="${hjtBoardDTO.tripWriter}" readonly>
                         </div>
                         <!--                        파일 첨부 화면 넣기-->
                         <div class="mb-3 input-group">
@@ -45,22 +45,22 @@
                         <div class="mb-3">
                             <label for="regDate" class="form-label">등록시간</label>
                             <input type="text" name="regDate" class="form-control" id="regDate"
-                                   th:value="${#temporals.format(boardDTO.regDate, 'yyyy-MM-dd HH:mm:ss')}" disabled>
+                                   th:value="${#temporals.format(hjtBoardDTO.regDate, 'yyyy-MM-dd HH:mm:ss')}" disabled>
                         </div>
 
                         <div class="mb-3">
                             <label for="modDate" class="form-label">수정시간</label>
                             <input type="text" name="modDate" class="form-control" id="modDate"
-                                   th:value="${#temporals.format(boardDTO.modDate, 'yyyy-MM-dd HH:mm:ss')}" disabled>
+                                   th:value="${#temporals.format(hjtBoardDTO.modDate, 'yyyy-MM-dd HH:mm:ss')}" disabled>
                         </div>
 
-                        <div class="mb-3" th:with="link = ${pageRequestDTO.getLink()}">
+                        <div class="mb-3" th:with="link = ${hjtPageRequestDTO.getLink()}">
                             <div th:with="user=${#authentication.principal}">
 <!--                                <div th:if="${user != null && user.username==boardDTO.writer}">-->
                                     <button type="button" class="btn btn-primary updateBtn">수정하기</button>
                                     <button type="button" class="btn btn-warning deleteBtn">삭제하기</button>
 <!--                                </div>-->
-                                <a th:href="|@{/board/list}?${link}|">
+                                <a th:href="|@{/hjt/list}?${link}|">
                                     <button type="button" class="btn btn-danger">목록가기</button>
                                 </a>
                             </div>
@@ -78,7 +78,7 @@
     <div class="row mt-3">
         <div class="col">
             <div class="d-flex uploadResult" style="flex-wrap: wrap">
-                <th:block th:each="fileName:${boardDTO.fileNames}">
+                <th:block th:each="fileName:${hjtBoardDTO.fileNames}">
                     <div class="card col-4" th:with="arr = ${fileName.split('_')}">
                         <div class="card-header d-flex justify-content-center">
                             [[${arr[1]}]]
@@ -154,15 +154,15 @@
     // 수정폼 요소 가져오기
     const formObj = document.querySelector("#f1")
     // 페이징 조건, 검색 , 필터 조건
-    const link = [[${pageRequestDTO.getLink()}]]
+    const link = [[${hjtPageRequestDTO.getLink()}]]
     //페이징 조건 만
-    const link2 = [[${pageRequestDTO.getLink2()}]]
+    const link2 = [[${hjtPageRequestDTO.getLink2()}]]
     // 글 수정 로직 이벤트 처리
     document.querySelector(".updateBtn").addEventListener("click", function (e) {
         e.preventDefault()
         e.stopPropagation()
 
-        formObj.action = `/board/update`
+        formObj.action = `/hjt/update`
         formObj.method = 'post'
         formObj.submit()
 
@@ -271,7 +271,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        formObj.action = `/board/update?${link}`
+        formObj.action = `/hjt/update?${link}`
 
         // 첨부 파일 : 히든으로 추가.
         // 새로운 이미지 추가.
@@ -300,7 +300,7 @@
         // 임시로, 화면에서 만 안보이는 사진.
         appendNotShownData()
 
-        formObj.action = `/board/delete`
+        formObj.action = `/hjt/delete`
         formObj.method = 'post'
         formObj.submit()
 

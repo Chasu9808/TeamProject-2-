@@ -28,8 +28,16 @@ public class msyMemberController {
     }
 
     @GetMapping("/login")
-    public void loginGet() {
-
+    public void loginGet(String error, String logout,
+                         RedirectAttributes redirectAttributes) {
+        if (logout != null) {
+            log.info("logoutTest user ====================");
+        }
+        if (error != null) {
+            log.info("logoutTest error ====================" + error);
+            redirectAttributes.addFlashAttribute(
+                    "error", "");
+        }
     }
 
     @GetMapping("/join")

@@ -6,8 +6,6 @@
 
 <body>
 
-
-
     <!--content : start-->
 
     <div layout:fragment="content">
@@ -83,12 +81,21 @@
             .form-group1 button:hover {
                 background-color: yellow;
             }
-
-
         </style>
     <section class="login">
         <div class="login-container">
             <h2 style="text-align: center">로그인</h2>
+
+            <div class="card-body">
+                <th:block th:if="${param.logout != null}">
+                    <h1 style="text-align: center">Logout</h1>
+                </th:block>
+
+                <th:block th:if="${param.error != null }">
+                    <h1>접근 권한이 없습니다.</h1>
+                    <h1>다시 로그인해주세요. </h1>
+                </th:block>
+
             <form action="/msy/login" method="post">
                 <div class="form-group">
                     <label for="mid">아이디:</label>
@@ -113,6 +120,7 @@
                 </div>
 
             </form>
+        </div>
         </div>
     </section>
         <!--content : end-->

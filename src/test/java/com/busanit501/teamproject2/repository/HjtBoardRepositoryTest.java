@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -44,16 +45,17 @@ public class HjtBoardRepositoryTest {
     @Test
     @Transactional
     public void hjtTestSelect() {
-        Long tripBno = 1L;
+        Long tripBno = 100L;
         Optional<HjtTripBoard> result = hjtBoardRepository.findById(tripBno);
         HjtTripBoard hjtTripBoard = result.orElseThrow();
         log.info("결과화면 : " + hjtTripBoard);
     }//testSelect end
 
     @Test
+    @Commit
     @Transactional
     public void hjtTestUpdate() {
-        Long tripBno = 1L;
+        Long tripBno = 2L;
         Optional<HjtTripBoard> result = hjtBoardRepository.findById(tripBno);
         HjtTripBoard hjtTripBoard = result.orElseThrow();
 

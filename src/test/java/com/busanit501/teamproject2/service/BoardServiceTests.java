@@ -8,6 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
@@ -47,6 +48,7 @@ public class BoardServiceTests {
   }
 
   @Test
+  @Commit
   @Transactional
   public void testUpdate() {
     // 변경시, 변경할 더미 데이터, 임시, 601L
@@ -63,109 +65,110 @@ public class BoardServiceTests {
     log.info("hjtBoardDTO 값을 확인해요~!" + hjtBoardDTO);
 
   }
+
+
+  @Test
+  @Commit
+  public void testDelete() {
+        //디비에서 조회하기.
+    // 좋은 질문,
+    // 서버에서 화면, 데이터 같이 처리, Controller,
+    // 질문, 게시글 삭제 할려면, 화면에 보일까요? 안보일까요?
+
+    // RestController, 데이터만 처리.
+    // 화면이 없어서, method delete 형식으로 명령이 오면,
+    hjtBoardService.delete(2L);
+
+
+  }
+
+  @Test
+  public void testList() {
+    // 화면에서 전달할 내용을 담은 PageRequestDTO 더미가 필요.
+    HjtPageRequestDTO hjtPageRequestDTO = HjtPageRequestDTO.builder()
+            .type("tcw")
+            .keyword("오늘")
+            .page(1)
+            .size(10)
+            .build();
+
+  HjtPageResponseDTO<HjtBoardDTO> responseDTO = hjtBoardService.list(hjtPageRequestDTO);
+    log.info("list 테스트 responseDTO : " + responseDTO);
+
+  }
 //
 //
-//  @Test
-//  public void testDelete() {
-//        //디비에서 조회하기.
-//    // 좋은 질문,
-//    // 서버에서 화면, 데이터 같이 처리, Controller,
-//    // 질문, 게시글 삭제 할려면, 화면에 보일까요? 안보일까요?
-//
-//    // RestController, 데이터만 처리.
-//    // 화면이 없어서, method delete 형식으로 명령이 오면,
-//    boardService.delete(601L);
-//
-//
-//  }
-//
-//  @Test
-//  public void testList() {
-//    // 화면에서 전달할 내용을 담은 PageRequestDTO 더미가 필요.
-//    PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-//            .type("tcw")
-//            .keyword("오늘")
-//            .page(1)
-//            .size(10)
-//            .build();
-//
-//  PageResponseDTO<BoardDTO> responseDTO = boardService.list(pageRequestDTO);
-//    log.info("list 테스트 responseDTO : " + responseDTO);
-//
-//  }
-//
-//
-//  @Test
-//  public void testListWithCount() {
-//    // 화면에서 전달할 내용을 담은 PageRequestDTO 더미가 필요.
-//    PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-//            .type("tcw")
-//            .keyword("오늘")
-//            .page(1)
-//            .size(10)
-//            .build();
-//
-//    PageResponseDTO<BoardListReplyCountDTO> responseDTO = boardService.listWithReplyCount(pageRequestDTO);
-//    log.info("list 테스트 responseDTO : " + responseDTO);
-//
-//  }
-//
-//  @Test
-//  public void testRegisterWithImages() {
-//    BoardDTO boardDTO = BoardDTO.builder()
-//            .title("샘플 제목입니다.")
-//            .content("샘플 내용입니다.")
-//            .writer("이상용")
-//            .build();
-//
-//    // 더미 이미지들
-//    boardDTO.setFileNames(
-//            Arrays.asList(
-//                  //파일명,
-//                    UUID.randomUUID()+"_testImage.png",
-//                    UUID.randomUUID()+"_testImage2.png",
-//                    UUID.randomUUID()+"_testImage3.png"
-//            )
-//    ); // 더미 이미지 파일명 추가
-//
-//    Long bno = boardService.register(boardDTO);
-//    log.info("boardService, register 확인 bno : " + bno);
-//  }
-//
-//  @Test
-//  public void testReadWithImage() {
-//
-//    BoardDTO boardDTO = boardService.read(104L);
-//    log.info("testReadWithImage, 하나 조회 boardDTO : " + boardDTO);
-//    for(String fileImage : boardDTO.getFileNames()){
-//      log.info("각 이미지 파일명만 조회 : " + fileImage);
-//    }
-//
-//  }
-//
-//  @Test
-//  public void testUpdateWithImages() {
-//    // 변경시, 변경할 더미 데이터, 임시, 601L
-//// 화면에서 넘어온 더미 데이터 만들기. DTO 타입.
-//    BoardDTO boardDTO = BoardDTO.builder()
-//            .bno(104L)
-//            .title("내일 모하니?수정버전")
-//            .content("부모님 인사하기 : 수정버전")
-//            .build();
-//
-//    // 더미 데이터에 첨부 이미지 파일 추가.
-//    boardDTO.setFileNames(
-//            Arrays.asList(
-//                    UUID.randomUUID()+"_sampleImage.png",
-//                    UUID.randomUUID()+"_sampleImage2.png"
-//            )
-//    );
-//
-//    //디비에서 조회하기.
-//    boardService.update(boardDTO);
-//
-//
-//  }
+  @Test
+  public void testListWithCount() {
+    // 화면에서 전달할 내용을 담은 PageRequestDTO 더미가 필요.
+    HjtPageRequestDTO hjtPageRequestDTO = HjtPageRequestDTO.builder()
+            .type("tcw")
+            .keyword("오늘")
+            .page(1)
+            .size(10)
+            .build();
+
+    HjtPageResponseDTO<HjtBoardListReplyCountDTO> hjtResponseDTO = hjtBoardService.listWithReplyCount(hjtPageRequestDTO);
+    log.info("list 테스트 responseDTO : " + hjtResponseDTO);
+
+  }
+
+  @Test
+  public void testRegisterWithImages() {
+    HjtBoardDTO hjtBoardDTO = HjtBoardDTO.builder()
+            .tripTitle("샘플 제목입니다.")
+            .tripContent("샘플 내용입니다.")
+            .tripWriter("이상용")
+            .build();
+
+    // 더미 이미지들
+    hjtBoardDTO.setFileNames(
+            Arrays.asList(
+                  //파일명,
+                    UUID.randomUUID()+"_testImage.png",
+                    UUID.randomUUID()+"_testImage2.png",
+                    UUID.randomUUID()+"_testImage3.png"
+            )
+    ); // 더미 이미지 파일명 추가
+
+    Long tripBno = hjtBoardService.register(hjtBoardDTO);
+    log.info("boardService, register 확인 tripBno : " + tripBno);
+  }
+
+  @Test
+  public void testReadWithImage() {
+
+    HjtBoardDTO hjtBoardDTO = hjtBoardService.read(104L);
+    log.info("testReadWithImage, 하나 조회 boardDTO : " + hjtBoardDTO);
+    for(String fileImage : hjtBoardDTO.getFileNames()){
+      log.info("각 이미지 파일명만 조회 : " + fileImage);
+    }
+
+  }
+
+  @Test
+  public void testUpdateWithImages() {
+    // 변경시, 변경할 더미 데이터, 임시, 601L
+// 화면에서 넘어온 더미 데이터 만들기. DTO 타입.
+    HjtBoardDTO hjtBoardDTO = HjtBoardDTO.builder()
+            .tripBno(104L)
+            .tripTitle("내일 모하니?수정버전")
+            .tripContent("부모님 인사하기 : 수정버전")
+            .build();
+
+    // 더미 데이터에 첨부 이미지 파일 추가.
+    hjtBoardDTO.setFileNames(
+            Arrays.asList(
+                    UUID.randomUUID()+"_sampleImage.png",
+                    UUID.randomUUID()+"_sampleImage2.png"
+            )
+    );
+
+    //디비에서 조회하기.
+    hjtBoardService.update(hjtBoardDTO);
+
+
+  }
 //
 //  @Test
 //  public void deleteAll() {

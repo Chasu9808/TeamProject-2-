@@ -24,7 +24,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 @Controller
-@RequestMapping("/hjtboard")
+@RequestMapping("/hjt")
 @Log4j2
 @RequiredArgsConstructor
 public class HjtBoardController {
@@ -37,7 +37,11 @@ public class HjtBoardController {
     public void list(HjtPageRequestDTO hjtPageRequestDTO, Model model) {
         HjtPageResponseDTO<BoardListAllDTO> hjtResponseDTO
                 = hjtBoardService.listWithAll(hjtPageRequestDTO);
+        hjtPageRequestDTO.setType("t");
+        log.info("HjtBoardController hjtPageRequestDTO 확인 :  " + hjtPageRequestDTO);
+        log.info("HjtBoardController hjtResponseDTO 확인 :  " + hjtResponseDTO);
         model.addAttribute("hjtResponseDTO", hjtResponseDTO);
+        model.addAttribute("hjtPageRequestDTO", hjtPageRequestDTO);
     }
 
     @GetMapping("/register")
@@ -52,7 +56,7 @@ public class HjtBoardController {
             log.info("register 중 오류 발생.");
             redirectAttributes.addFlashAttribute(
                     "errors", bindingResult.getAllErrors());
-            return "redirect:/board/register";
+            return "redirect:/hjt/register";
         }
         log.info("화면에서 입력 받은 내용 확인 : " + hjtBoardDTO);
 
@@ -60,7 +64,7 @@ public class HjtBoardController {
         Long tripBno = hjtBoardService.register(hjtBoardDTO);
 
         redirectAttributes.addFlashAttribute("result", tripBno);
-        return "redirect:/hjtboard/list";
+        return "redirect:/hjt/list";
     }
 
     @GetMapping({"/read", "/update"})
@@ -87,14 +91,14 @@ public class HjtBoardController {
                     "errors", bindingResult.getAllErrors());
 
             redirectAttributes.addAttribute("tripBno", hjtBoardDTO.getTripBno());
-            return "redirect:/hjtboard/update" + hjtPageRequestDTO.getLink();
+            return "redirect:/hjt/update" + hjtPageRequestDTO.getLink();
         }
         log.info("화면에서 입력 받은 내용 update 확인 : " + hjtBoardDTO);
         hjtBoardService.update(hjtBoardDTO);
 
         redirectAttributes.addFlashAttribute("result", hjtBoardDTO.getTripBno());
         redirectAttributes.addFlashAttribute("resultType", "update");
-        return "redirect:/hjtboard/list?" + hjtPageRequestDTO.getLink2();
+        return "redirect:/hjt/list?" + hjtPageRequestDTO.getLink2();
 
     }
 
@@ -111,7 +115,7 @@ public class HjtBoardController {
 
         redirectAttributes.addFlashAttribute("result", tripBno);
         redirectAttributes.addFlashAttribute("resultType", "delete");
-        return "redirect:/hjtboard/list?" + hjtPageRequestDTO.getLink2();
+        return "redirect:/hjt/list?" + hjtPageRequestDTO.getLink2();
 
     }
 

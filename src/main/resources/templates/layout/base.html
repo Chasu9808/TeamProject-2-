@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ko"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="www.thymeleaf.org">
+      xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -29,12 +29,13 @@
         <div class="header-line">
             <div class="top-wrap inner"> <!--top=wrap : start-->
                 <div class="logo-box"><!--logo : start-->
-                    <a href="/lcs/list"><img src="/images/lcs_logo.png" alr="메인페이지 바로가기"></a>
+                    <a href="/lcs/list"><img src="/images/lcs_logo.png" alt="메인페이지 바로가기"></a>
                 </div><!--logo : end-->
                 <div class="util-box"><!--util-box : start-->
-                    <a href="/msy/login">로그인</a>
-                    <a href="/msy/join">회원가입</a>
-                    <a href="/lcs/list">사이트맵</a>
+                    <a sec:authorize="isAnonymous()" th:href="@{/msy/join}">회원가입</a>
+                    <a sec:authorize="isAnonymous()" th:href="@{/msy/login}">로그인</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/msy/logout}">로그아웃</a>
+                    <a th:href="@{/lcs/list}">사이트맵</a>
                 </div><!--util-box : end-->
             </div><!--top=wrap: end-->
         </div>
